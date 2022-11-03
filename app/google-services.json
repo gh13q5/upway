@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "273721884139",
+    "project_id": "upway-ca798",
+    "storage_bucket": "upway-ca798.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273721884139:android:30de12e451ad2c82d0edae",
+        "android_client_info": {
+          "package_name": "com.mobile.upway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273721884139-9e7fknuv4svg13jd3rg1rf6icvr2087k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXsT0hJEE9laid-DDGuttQ0-2GAm3bXvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273721884139-9e7fknuv4svg13jd3rg1rf6icvr2087k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

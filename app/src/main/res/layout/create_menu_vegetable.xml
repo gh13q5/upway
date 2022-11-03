@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/choice_vegetable"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F3F3"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/create_header"
+        layout="@layout/create_menu_top"> </include>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/choice_vegetable_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/create_header"
+        android:layout_above="@id/bottom_square"/>
+
+    <include
+        android:id="@+id/bottom_square"
+        layout="@layout/create_menu_bottom"> </include>
+
+</RelativeLayout>
