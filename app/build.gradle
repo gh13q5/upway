@@ -32,6 +32,7 @@ android {
         dataBinding = true
     }
 
+    namespace 'com.example.namespace'
     namespace 'com.mobile.upway'
 }
 
