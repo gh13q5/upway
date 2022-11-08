@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <include
+                android:id="@+id/rcptbl"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/detail_recipe_tbl"
+                />
+            <ImageView
+                android:src="@drawable/dashline"
+                android:layerType="software"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp" />
+            <include
+                android:id="@+id/ingrtbl"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/detail_ingridient_list"
+                />
+            <ImageView
+                android:src="@drawable/dashline"
+                android:layerType="software"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp" />
+            <include
+                android:id="@+id/commenttbl"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/detail_comment_tbl"
+                />
+            <ImageView
+                android:src="@drawable/dashline"
+                android:layerType="software"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp" />
+            <include
+                android:id="@+id/rvwtbl"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/detail_review_list"
+                />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
