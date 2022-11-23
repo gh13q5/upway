@@ -14,11 +14,45 @@
             android:id="@+id/create_header"
             layout="@layout/create_menu_top"> </include>
 
+        <LinearLayout
+            android:id="@+id/sandwich_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/create_header"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            >
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:text="15cm"
+                android:textColor="#000000"
+                android:backgroundTint="#FFFFFF"
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:text="30cm"
+                android:textColor="#000000"
+                android:backgroundTint="#FFFFFF"
+            />
+
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/choice_sand_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/create_header"
+            android:layout_below="@id/sandwich_size"
             android:layout_above="@id/bottom_square"/>
 
         <RelativeLayout
