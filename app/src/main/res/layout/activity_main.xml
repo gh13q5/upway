@@ -9,6 +9,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <include
+        android:id="@+id/include_title_bar"
+        layout="@layout/activity_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:id="@+id/top_btn_group"
         android:layout_width="match_parent"
