@@ -12,7 +12,7 @@
 
         <include
             android:id="@+id/create_header"
-            layout="@layout/create_menu_top"> </include>
+            layout="@layout/create_comb_top"> </include>
 
         <LinearLayout
             android:id="@+id/sandwich_size"
