@@ -1,4 +1,4 @@
-package com.mobile.upway;
+package com.mobile.upway.dto;
 
 public class Cheese {
 

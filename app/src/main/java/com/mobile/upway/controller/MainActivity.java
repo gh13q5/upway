@@ -1,8 +1,10 @@
-package com.mobile.upway;
+package com.mobile.upway.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.mobile.upway.R;
 
 public class MainActivity extends AppCompatActivity {
 
