@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/create_header"
-        layout="@layout/create_menu_top"> </include>
+        layout="@layout/create_comb_top"> </include>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/choice_add_list"

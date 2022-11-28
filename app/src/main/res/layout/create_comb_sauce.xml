@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/choice_bread"
+    android:id="@+id/choice_sauce"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F3F3F3"
@@ -10,10 +9,10 @@
 
     <include
         android:id="@+id/create_header"
-        layout="@layout/create_menu_top"> </include>
+        layout="@layout/create_comb_top"> </include>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/choice_bread_list"
+        android:id="@+id/choice_sauce_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/create_header"
@@ -21,7 +20,7 @@
 
     <include
         android:id="@+id/bottom_square"
-        layout="@layout/create_menu_bottom"> </include>
+        layout="@layout/create_comb_bottom"> </include>
 
 
 </RelativeLayout>
