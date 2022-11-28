@@ -3,15 +3,13 @@ package com.mobile.upway.dto;
 public class Vegetable {
 
     public String vegetable;
-    public String vegetablePrice;
     public String vegetableKcal;
     public String vegetableImgUrl;
 
     public Vegetable(){}
 
-    public Vegetable(String cheese, String cheesePrice, String cheeseKcal, String cheeseImgUrl){
+    public Vegetable(String vegetable, String vegetableKcal, String vegetableImgUrl){
         this.vegetable = vegetable;
-        this.vegetablePrice = vegetablePrice;
         this.vegetableKcal = vegetableKcal;
         this.vegetableImgUrl = vegetableImgUrl;
     }
@@ -22,14 +20,6 @@ public class Vegetable {
 
     public void setVegetable(){
         this.vegetable = vegetable;
-    }
-
-    public String getVegetablePrice(){
-        return vegetablePrice;
-    }
-
-    public void setVegetablePrice(){
-        this.vegetablePrice = vegetablePrice;
     }
 
     public String getVegetableKcal(){
