@@ -53,10 +53,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/sandwich_size"
-            android:layout_above="@id/bottom_square"/>
+            android:layout_above="@id/sandwich_bottom_square"/>
 
         <RelativeLayout
-            android:id="@+id/bottom_square"
+            android:id="@+id/sandwich_bottom_square"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FEC70B"
@@ -76,7 +76,7 @@
                 android:textSize="20sp" />
 
             <android.widget.Button
-                android:id="@+id/cm_btn_next"
+                android:id="@+id/sw_btn_next"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_alignParentRight="true"
