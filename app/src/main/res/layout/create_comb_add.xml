@@ -16,10 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/create_header"
-        android:layout_above="@id/bottom_square"/>
+        android:layout_above="@id/add_bottom_square"/>
 
     <RelativeLayout
-        android:id="@+id/bottom_square"
+        android:id="@+id/add_bottom_square"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FEC70B"
@@ -39,10 +39,10 @@
             android:textSize="20sp" />
 
         <android.widget.Button
-            android:id="@+id/cm_btn_before"
+            android:id="@+id/ad_btn_before"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:layout_toLeftOf="@id/cm_btn_end"
+            android:layout_toLeftOf="@id/ad_btn_end"
             android:layout_centerVertical="true"
             android:layout_marginRight="12dp"
             android:gravity="center"
@@ -52,7 +52,7 @@
             />
 
         <android.widget.Button
-            android:id="@+id/cm_btn_end"
+            android:id="@+id/ad_btn_end"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_alignParentRight="true"

@@ -6,14 +6,16 @@ public class Bread {
     public String breadPrice;
     public String breadKcal;
     public String breadImgUrl;
+    public int breadLength;
 
     public Bread(){}
 
-    public Bread(String bread, String breadPrice, String breadKcal, String breadImgUrl){
+    public Bread(String bread, String breadPrice, String breadKcal, String breadImgUrl, int breadLength){
         this.bread = bread;
         this.breadPrice = breadPrice;
         this.breadKcal = breadKcal;
         this.breadImgUrl = breadImgUrl;
+        this.breadLength = breadLength;
     }
 
     public String getBread(){
@@ -47,5 +49,9 @@ public class Bread {
     public void setBreadImgUrl() {
         this.breadImgUrl = breadImgUrl;
     }
+
+    public int getBreadLength() { return breadLength; }
+
+    public void setBreadLength() { this.breadLength = breadLength; }
 
 }

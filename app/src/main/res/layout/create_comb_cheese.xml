@@ -16,10 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/create_header"
-        android:layout_above="@id/bottom_square"/>
+        android:layout_above="@id/cheese_bottom_square"/>
 
     <include
-        android:id="@+id/bottom_square"
+        android:id="@+id/cheese_bottom_square"
         layout="@layout/create_comb_bottom"> </include>
 
 
