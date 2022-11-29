@@ -7,6 +7,16 @@ public class Menu {
     int price;
     int size;
 
+    public Menu(){}
+
+    public Menu(int id, String name, int kcal, int price, int size) {
+        this.id = id;
+        this.name = name;
+        this.kcal = kcal;
+        this.price = price;
+        this.size = size;
+    }
+
     public int getId() {
         return id;
     }

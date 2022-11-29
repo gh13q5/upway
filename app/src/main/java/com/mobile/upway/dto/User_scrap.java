@@ -2,7 +2,14 @@ package com.mobile.upway.dto;
 
 public class User_scrap {
     User user;
-    //Combination comb;
+    Combination comb;
+
+    public User_scrap(){ }
+
+    public User_scrap(User user, Combination comb) {
+        this.user = user;
+        this.comb = comb;
+    }
 
     public User getUser() {
         return user;
@@ -11,7 +18,7 @@ public class User_scrap {
     public void setUser(User user) {
         this.user = user;
     }
-    /*
+
     public Combination getComb() {
         return comb;
     }
@@ -19,6 +26,4 @@ public class User_scrap {
     public void setComb(Combination comb) {
         this.comb = comb;
     }
-
-     */
 }
