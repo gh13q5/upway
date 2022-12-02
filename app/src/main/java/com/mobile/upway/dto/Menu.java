@@ -1,28 +1,16 @@
 package com.mobile.upway.dto;
 
 public class Menu {
-    int id;
     String name;
     int kcal;
     int price;
-    int size;
 
     public Menu(){}
 
-    public Menu(int id, String name, int kcal, int price, int size) {
-        this.id = id;
+    public Menu(String name, int kcal, int price) {
         this.name = name;
         this.kcal = kcal;
         this.price = price;
-        this.size = size;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -47,13 +35,5 @@ public class Menu {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
     }
 }
