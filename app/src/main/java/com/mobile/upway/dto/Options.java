@@ -20,7 +20,7 @@ public class Options {
         return options;
     }
 
-    public void setOptions(){
+    public void setOptions(String s){
         this.options = options;
     }
 
@@ -28,7 +28,7 @@ public class Options {
         return optionsPrice;
     }
 
-    public void setOptionsPrice(){
+    public void setOptionsPrice(String s){
         this.optionsPrice = optionsPrice;
     }
 
@@ -36,7 +36,7 @@ public class Options {
         return optionsKcal;
     }
 
-    public void setOptionsKcal(){
+    public void setOptionsKcal(String s){
         this.optionsKcal = optionsKcal;
     }
 

@@ -18,7 +18,7 @@ public class Vegetable {
         return vegetable;
     }
 
-    public void setVegetable(){
+    public void setVegetable(String s){
         this.vegetable = vegetable;
     }
 
@@ -26,7 +26,7 @@ public class Vegetable {
         return vegetableKcal;
     }
 
-    public void setVegetableKcal(){
+    public void setVegetableKcal(String s){
         this.vegetableKcal = vegetableKcal;
     }
 
