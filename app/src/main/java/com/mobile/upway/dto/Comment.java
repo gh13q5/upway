@@ -1,31 +1,33 @@
 package com.mobile.upway.dto;
 
 public class Comment {
-    public int id;
-    public int userId;
+    public String combTitle;
+    public String userId;
     public String content;
+
     public Comment(){
 
     }
-    public Comment(int id, int userId,String content){
-        this.id = id;
+
+    public Comment(String combTitle, String userId,String content){
+        this.combTitle = combTitle;
         this.userId = userId;
         this.content = content;
     }
 
-    public int getId() {
-        return id;
+    public String getCombTitle() {
+        return combTitle;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCombTitle(String combTitle) {
+        this.combTitle = combTitle;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
