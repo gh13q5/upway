@@ -18,7 +18,7 @@ public class Sauce {
         return sauce;
     }
 
-    public void setSauce(){
+    public void setSauce(String s){
         this.sauce = sauce;
     }
 
@@ -26,7 +26,7 @@ public class Sauce {
         return sauceKcal;
     }
 
-    public void setSauceKcal(){
+    public void setSauceKcal(String s){
         this.sauceKcal = sauceKcal;
     }
 

@@ -18,7 +18,7 @@ public class Cheese {
         return cheese;
     }
 
-    public void setCheese(){
+    public void setCheese(String s){
         this.cheese = cheese;
     }
 
@@ -26,7 +26,7 @@ public class Cheese {
         return cheeseKcal;
     }
 
-    public void setCheeseKcal(){
+    public void setCheeseKcal(String s){
         this.cheeseKcal = cheeseKcal;
     }
 
