@@ -33,6 +33,7 @@
             android:layout_marginBottom="15dp"
             android:layout_weight="1"
             android:background="@drawable/list_card_shape"
+            android:onClick="onClick"
             android:orientation="vertical"
             android:paddingTop="18dp"
             android:paddingBottom="80dp">
@@ -71,6 +72,7 @@
             android:layout_marginBottom="15dp"
             android:layout_weight="1"
             android:background="@drawable/list_card_shape"
+            android:onClick="onClick"
             android:orientation="vertical"
             android:paddingTop="18dp"
             android:paddingBottom="80dp">
