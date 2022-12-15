@@ -47,6 +47,7 @@ public class combinationDAO {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Combination combination = new Combination();
                                 combination = document.toObject(Combination.class);
+                                combination.setId(document.getId());
                                 combinationList.add(combination);
                             }
                         } else {
