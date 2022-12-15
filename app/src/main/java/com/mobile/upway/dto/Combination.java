@@ -3,23 +3,25 @@ package com.mobile.upway.dto;
 import java.util.List;
 
 public class Combination {
+    public String id;
     public String title;
     public String description;
     public int scraps;
     public int kcal;
     public int price;
-    public String user;
-    public String menu;
-    public String bread;
-    public String cheese;
-    public List<String> vegetableList;
-    public List<String> sauceList;
-    public List<String> optionsList;
+    public User user;
+    public Menu menu;
+    public Bread bread;
+    public Cheese cheese;
+    public List<Vegetable> vegetableList;
+    public List<Sauce> sauceList;
+    public List<Options> optionsList;
 
     public Combination() {
     }
 
-    public Combination(String title, String description, int scraps, int kcal, int price, String user, String menu, String bread, String cheese, List<String> vegetableList, List<String> sauceList, List<String> optionsList) {
+    public Combination(String uid,String title, String description, int scraps, int kcal, int price, User user, Menu menu, Bread bread, Cheese cheese, List<Vegetable> vegetableList, List<Sauce> sauceList, List<Options> optionsList) {
+        this.id = uid;
         this.title = title;
         this.description = description;
         this.scraps = scraps;
@@ -32,6 +34,14 @@ public class Combination {
         this.vegetableList = vegetableList;
         this.sauceList = sauceList;
         this.optionsList = optionsList;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String uid) {
+        this.id = uid;
     }
 
     public String getTitle() {
@@ -74,59 +84,59 @@ public class Combination {
         this.price = price;
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public String getMenu() {
+    public Menu getMenu() {
         return menu;
     }
 
-    public void setMenu(String menu) {
+    public void setMenu(Menu menu) {
         this.menu = menu;
     }
 
-    public String getBread() {
+    public Bread getBread() {
         return bread;
     }
 
-    public void setBread(String bread) {
+    public void setBread(Bread bread) {
         this.bread = bread;
     }
 
-    public String getCheese() {
+    public Cheese getCheese() {
         return cheese;
     }
 
-    public void setCheese(String cheese) {
+    public void setCheese(Cheese cheese) {
         this.cheese = cheese;
     }
 
-    public List<String> getVegetableList() {
+    public List<Vegetable> getVegetableList() {
         return vegetableList;
     }
 
-    public void setVegetableList(List<String> vegetableList) {
+    public void setVegetableList(List<Vegetable> vegetableList) {
         this.vegetableList = vegetableList;
     }
 
-    public List<String> getSauceList() {
+    public List<Sauce> getSauceList() {
         return sauceList;
     }
 
-    public void setSauceList(List<String> sauceList) {
+    public void setSauceList(List<Sauce> sauceList) {
         this.sauceList = sauceList;
     }
 
-    public List<String> getOptionsList() {
+    public List<Options> getOptionsList() {
         return optionsList;
     }
 
-    public void setOptionsList(List<String> optionsList) {
+    public void setOptionsList(List<Options> optionsList) {
         this.optionsList = optionsList;
     }
 }
