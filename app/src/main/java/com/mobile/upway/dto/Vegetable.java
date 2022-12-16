@@ -2,39 +2,30 @@ package com.mobile.upway.dto;
 
 public class Vegetable {
 
-    public String vegetable;
-    public String vegetableKcal;
-    public String vegetableImgUrl;
+    public String name;
+    public int kcal;
 
-    public Vegetable(){}
-
-    public Vegetable(String vegetable, String vegetableKcal, String vegetableImgUrl){
-        this.vegetable = vegetable;
-        this.vegetableKcal = vegetableKcal;
-        this.vegetableImgUrl = vegetableImgUrl;
+    public Vegetable() {
     }
 
-    public String getVegetable(){
-        return vegetable;
+    public Vegetable(String name, int kcal) {
+        this.name = name;
+        this.kcal = kcal;
     }
 
-    public void setVegetable(String s){
-        this.vegetable = vegetable;
+    public String getName() {
+        return name;
     }
 
-    public String getVegetableKcal(){
-        return vegetableKcal;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setVegetableKcal(String s){
-        this.vegetableKcal = vegetableKcal;
+    public int getKcal() {
+        return kcal;
     }
 
-    public String getVegetableImgUrl(){
-        return vegetableImgUrl;
-    }
-
-    public void setVegetableImgUrl() {
-        this.vegetableImgUrl = vegetableImgUrl;
+    public void setKcal(int kcal) {
+        this.kcal = kcal;
     }
 }

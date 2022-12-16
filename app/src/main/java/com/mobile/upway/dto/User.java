@@ -1,26 +1,16 @@
 package com.mobile.upway.dto;
 
 public class User {
-    int id;
     String userId;
     String password;
     String nickname;
 
     public User(){}
 
-    public User(int id, String userId, String password, String nickname) {
-        this.id = id;
+    public User(String userId, String password, String nickname) {
         this.userId = userId;
         this.password = password;
         this.nickname = nickname;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getUserId() {

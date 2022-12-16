@@ -1,32 +1,45 @@
 package com.mobile.upway.controller;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile.upway.R;
-import com.mobile.upway.dto.User;
+import com.mobile.upway.dao.CombinationDAO;
+import com.mobile.upway.dto.Combination;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     static final String TAG = "MainActivity";
 
+    // LIST
+    RecyclerView recyclerView;
+    CombListAdapter adapter;
+
+    // DAO
+    CombinationDAO combDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // 리스트 연결
+        recyclerView = findViewById(R.id.main_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        displayCombList(recyclerView);
+
     }
 
-    public void onClick(View v){
-        switch(v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.my_sub_btn:
                 // 임시로 login 페이지랑 연결시켜놓음
                 Intent myIntent = new Intent(this, LoginActivity.class);
@@ -39,5 +52,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.subway_link_btn:
                 break;
         }
+    }
+
+    public void displayCombList(RecyclerView recyclerView){
+        combDAO = new CombinationDAO();
+        combDAO.getAllComb(recyclerView);
     }
 }
