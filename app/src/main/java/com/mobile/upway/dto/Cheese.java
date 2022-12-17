@@ -2,39 +2,30 @@ package com.mobile.upway.dto;
 
 public class Cheese {
 
-    public String cheese;
-    public String cheeseKcal;
-    public String cheeseImgUrl;
+    public String name;
+    public int kcal;
 
-    public Cheese(){}
-
-    public Cheese(String cheese, String cheeseKcal, String cheeseImgUrl){
-        this.cheese = cheese;
-        this.cheeseKcal = cheeseKcal;
-        this.cheeseImgUrl = cheeseImgUrl;
+    public Cheese() {
     }
 
-    public String getCheese(){
-        return cheese;
+    public Cheese(String name, int kcal) {
+        this.name = name;
+        this.kcal = kcal;
     }
 
-    public void setCheese(String s){
-        this.cheese = cheese;
+    public String getName() {
+        return name;
     }
 
-    public String getCheeseKcal(){
-        return cheeseKcal;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCheeseKcal(String s){
-        this.cheeseKcal = cheeseKcal;
+    public int getKcal() {
+        return kcal;
     }
 
-    public String getCheeseImgUrl(){
-        return cheeseImgUrl;
-    }
-
-    public void setCheeseImgUrl() {
-        this.cheeseImgUrl = cheeseImgUrl;
+    public void setKcal(int kcal) {
+        this.kcal = kcal;
     }
 }

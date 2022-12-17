@@ -2,40 +2,31 @@ package com.mobile.upway.dto;
 
 public class Bread {
 
-    public String bread;
-    public String breadKcal;
-    public String breadImgUrl;
+    public String name;
+    public int kcal;
 
-    public Bread(){}
-
-    public Bread(String bread, String breadKcal, String breadImgUrl){
-        this.bread = bread;
-        this.breadKcal = breadKcal;
-        this.breadImgUrl = breadImgUrl;
+    public Bread() {
     }
 
-    public String getBread(){
-        return bread;
+    public Bread(String name, int kcal) {
+        this.name = name;
+        this.kcal = kcal;
     }
 
-    public void setBread(String s){
-        this.bread = bread;
+    public String getName() {
+        return name;
     }
 
-    public String getBreadKcal(){
-        return breadKcal;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setBreadKcal(String s){
-        this.breadKcal = breadKcal;
+    public int getKcal() {
+        return kcal;
     }
 
-    public String getBreadImgUrl(){
-        return breadImgUrl;
-    }
-
-    public void setBreadImgUrl() {
-        this.breadImgUrl = breadImgUrl;
+    public void setKcal(int kcal) {
+        this.kcal = kcal;
     }
 
 }

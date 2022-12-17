@@ -49,10 +49,10 @@ public class CombListAdapter extends RecyclerView.Adapter<CombListAdapter.ViewHo
 
         holder.title.setText(comb.getTitle());
         holder.kcalAndPrice.setText(comb.getKcal() + "kcal / " + comb.getPrice() + "원");
-        holder.bread.setText(comb.getBread().getBread());
-        holder.cheese.setText(comb.getCheese().getCheese());
+        holder.bread.setText(comb.getBread().getName());
+        holder.cheese.setText(comb.getCheese().getName());
         holder.vege.setText(comb.getVegetableList().get(0).getName());
-        holder.sauce.setText(comb.getSauceList().get(0).getSauce());
+        holder.sauce.setText(comb.getSauceList().get(0).getKcal());
         holder.options.setText(comb.getOptionsList().get(0).getOptions());
     }
 

@@ -2,40 +2,30 @@ package com.mobile.upway.dto;
 
 public class Sauce {
 
-    public String sauce;
-    public String sauceKcal;
-    public String sauceImgUrl;
+    public String name;
+    public int kcal;
 
     public Sauce(){}
 
-    public Sauce(String sauce, String sauceKcal, String sauceImgUrl){
-        this.sauce = sauce;
-        this.sauceKcal = sauceKcal;
-        this.sauceImgUrl = sauceImgUrl;
+    public Sauce(String sauce, int sauceKcal, String sauceImgUrl){
+        this.name = name;
+        this.kcal = kcal;
     }
 
-    public String getSauce(){
-        return sauce;
+    public String getName(){
+        return name;
     }
 
-    public void setSauce(String s){
-        this.sauce = sauce;
+    public void setName(String name){
+        this.name = name;
     }
 
-    public String getSauceKcal(){
-        return sauceKcal;
+    public int getKcal(){
+        return kcal;
     }
 
-    public void setSauceKcal(String s){
-        this.sauceKcal = sauceKcal;
-    }
-
-    public String getSauceImgUrl(){
-        return sauceImgUrl;
-    }
-
-    public void setSauceImgUrl() {
-        this.sauceImgUrl = sauceImgUrl;
+    public void setKcal(int kcal){
+        this.kcal = kcal;
     }
 }
 
