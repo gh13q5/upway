@@ -18,6 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.LoginActivity"></activity>
+        <activity android:name=".controller.SelectLoginActivity"></activity>
+        <activity android:name=".controller.RegistActivity"></activity>
         <activity android:name=".controller.BestSubActivity"></activity>
     </application>
 </manifest>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import java.util.zip.Inflater;
 public class CombListAdapter extends RecyclerView.Adapter<CombListAdapter.ViewHolder> {
     public static final String TAG = "CombListAdapter";
 
+    private Context context;
     private ArrayList<Combination> combList;
 
     public CombListAdapter(){
@@ -34,7 +36,7 @@ public class CombListAdapter extends RecyclerView.Adapter<CombListAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService((Context.LAYOUT_INFLATER_SERVICE));
 
         View view = inflater.inflate(R.layout.list_item_standard, parent, false);
@@ -51,9 +53,37 @@ public class CombListAdapter extends RecyclerView.Adapter<CombListAdapter.ViewHo
         holder.kcalAndPrice.setText(comb.getKcal() + "kcal / " + comb.getPrice() + "원");
         holder.bread.setText(comb.getBread().getName());
         holder.cheese.setText(comb.getCheese().getName());
-        holder.vege.setText(comb.getVegetableList().get(0).getName());
-        holder.sauce.setText(comb.getSauceList().get(0).getKcal());
-        holder.options.setText(comb.getOptionsList().get(0).getName());
+
+        // 반복문으로 생성하는 재료들
+        for(int i = 0; i < comb.getVegetableList().size(); i++){
+            LayoutInflater inflater =(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.list_item_ingredient, null);
+            TextView child = (TextView) view.findViewById(R.id.ingredient);
+            child.setText("-" + comb.getVegetableList().get(i).getName());
+
+            ((ViewGroup) child.getParent()).removeView(child);
+            holder.vegeLayout.addView(child);
+        }
+
+        for(int i = 0; i < comb.getSauceList().size(); i++){
+            LayoutInflater inflater =(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.list_item_ingredient_yellow, null);
+            TextView child = (TextView) view.findViewById(R.id.ingredient);
+            child.setText("-" + comb.getSauceList().get(i).getName());
+
+            ((ViewGroup) child.getParent()).removeView(child);
+            holder.sauceLayout.addView(child);
+        }
+
+        for(int i = 0; i < comb.getOptionsList().size(); i++){
+            LayoutInflater inflater =(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.list_item_ingredient, null);
+            TextView child = (TextView) view.findViewById(R.id.ingredient);
+            child.setText("-" + comb.getOptionsList().get(i).getName());
+
+            ((ViewGroup) child.getParent()).removeView(child);
+            holder.optionsLayout.addView(child);
+        }
     }
 
     @Override
@@ -77,9 +107,9 @@ public class CombListAdapter extends RecyclerView.Adapter<CombListAdapter.ViewHo
         public TextView kcalAndPrice = null;
         public TextView bread = null;
         public TextView cheese = null;
-        public TextView vege = null;
-        public TextView sauce = null;
-        public TextView options = null;
+        public LinearLayout vegeLayout = null;
+        public LinearLayout sauceLayout = null;
+        public LinearLayout optionsLayout = null;
 
         ViewHolder(Context context, View itemView) {
             super(itemView);
@@ -88,9 +118,9 @@ public class CombListAdapter extends RecyclerView.Adapter<CombListAdapter.ViewHo
             kcalAndPrice = itemView.findViewById(R.id.main_kcal_price);
             bread = itemView.findViewById(R.id.bread_item);
             cheese = itemView.findViewById(R.id.cheese_item);
-            vege = itemView.findViewById(R.id.vege_item);
-            sauce = itemView.findViewById(R.id.sauce_item);
-            options = itemView.findViewById(R.id.option_item);
+            vegeLayout = itemView.findViewById(R.id.vege_type);
+            sauceLayout = itemView.findViewById(R.id.sauce_type);
+            optionsLayout = itemView.findViewById(R.id.option_type);
         }
     }
 }
