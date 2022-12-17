@@ -55,7 +55,7 @@
         app:layout_constraintTop_toTopOf="@+id/login_form_bg">
 
         <TextView
-            android:id="@+id/login_btn"
+            android:id="@+id/regist_form_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -65,6 +65,7 @@
             android:layout_weight="1"
             android:background="@drawable/list_card_detail_yellow_shape"
             android:gravity="center"
+            android:onClick="onClick"
             android:paddingLeft="55dp"
             android:paddingTop="30dp"
             android:paddingRight="55dp"
@@ -84,6 +85,7 @@
             android:layout_weight="1"
             android:background="@drawable/list_card_detail_yellow_shape"
             android:gravity="center"
+            android:onClick="onClick"
             android:paddingLeft="55dp"
             android:paddingTop="30dp"
             android:paddingRight="55dp"

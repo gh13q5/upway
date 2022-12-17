@@ -2,50 +2,49 @@ package com.mobile.upway.dto;
 
 public class Options {
 
-    public String options;
-    public String optionsPrice;
-    public String optionsKcal;
-    public String optionsImgUrl;
+    public String name;
+    public int price;
+    public int kcal;
+    public String imgUrl;
 
     public Options(){}
 
-    public Options(String options, String optionsPrice, String optionsKcal, String optionsImgUrl){
-        this.options = options;
-        this.optionsPrice = optionsPrice;
-        this.optionsKcal = optionsKcal;
-        this.optionsImgUrl = optionsImgUrl;
+    public Options(String name, int price, int kcal, String imgUrl) {
+        this.name = name;
+        this.price = price;
+        this.kcal = kcal;
+        this.imgUrl = imgUrl;
     }
 
-    public String getOptions(){
-        return options;
+    public String getName() {
+        return name;
     }
 
-    public void setOptions(String s){
-        this.options = options;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getOptionsPrice(){
-        return optionsPrice;
+    public int getPrice() {
+        return price;
     }
 
-    public void setOptionsPrice(String s){
-        this.optionsPrice = optionsPrice;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public String getOptionsKcal(){
-        return optionsKcal;
+    public int getKcal() {
+        return kcal;
     }
 
-    public void setOptionsKcal(String s){
-        this.optionsKcal = optionsKcal;
+    public void setKcal(int kcal) {
+        this.kcal = kcal;
     }
 
-    public String getOptionsImgUrl(){
-        return optionsImgUrl;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setOptionsImgUrl() {
-        this.optionsImgUrl = optionsImgUrl;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
-
 }

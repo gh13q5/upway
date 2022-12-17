@@ -73,17 +73,19 @@ public class CombinationDAO {
                                             break;
                                         case "menu":
                                             MenuDAO menuDAO = new MenuDAO();
-                                            combination.setMenu(menuDAO.findMenuByName(entry.getValue().toString()));
+                                            combination.setMenu(menuDAO.findMenuById(entry.getValue().toString()));
+
                                             break;
                                         case "bread":
                                             // 수정 중 ...
                                             BreadDAO breadDAO = new BreadDAO();
                                             combination.setBread(breadDAO.findBreadById(entry.getValue().toString()));
-                                            Log.d(TAG, combination.getBread().getName());
+
                                             break;
                                         case "cheese":
                                             CheeseDAO cheeseDAO = new CheeseDAO();
-                                            combination.setCheese(cheeseDAO.findCheeseByName(entry.getValue().toString()));
+                                            combination.setCheese(cheeseDAO.findCheeseById(entry.getValue().toString()));
+
                                             break;
                                         case "vegetableList":
                                             List<Vegetable> vegeList = new ArrayList<>();

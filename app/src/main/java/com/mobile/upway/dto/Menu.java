@@ -1,10 +1,10 @@
 package com.mobile.upway.dto;
 
 public class Menu {
-    String name;
-    int kcal;
-    int price;
-    String imgUrl;
+    public String name;
+    public int kcal;
+    public int price;
+    public String imgUrl;
 
     public Menu(){}
 

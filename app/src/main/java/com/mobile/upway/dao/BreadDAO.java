@@ -38,18 +38,8 @@ public class BreadDAO {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
-                            bread[0] = new Bread();
-                            Map<String, Object> data = document.getData();
-                            for (Map.Entry<String, Object> entry : data.entrySet()) {
-                                switch (entry.getKey()) {
-                                    case "name":
-                                        bread[0].setName(entry.getValue().toString());
-                                        break;
-                                    case "kcal":
-                                        bread[0].setKcal((Integer) entry.getValue());
-                                        break;
-                                }
-                            }
+                            bread[0] = document.toObject(Bread.class);
+                            Log.d(TAG, bread[0].getName());
                         }
                     }
                 });
