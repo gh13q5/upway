@@ -146,7 +146,7 @@ public class CombinationDAO {
                                 combinationList.add(combination);
                                 Log.d(TAG, combination.getId());
                             }
-                            fireStoreListCallback.onCallbackCombList(combinationList);
+                            fireStoreListCallback.onCallbackList(combinationList);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -154,10 +154,10 @@ public class CombinationDAO {
                 });
     }
 
-    //ReadBytitle
-    public Combination getCombByTitle(String title) {
+    //ReadByid
+    public Combination getCombByTitle(String id) {
         Combination[] combination = {new Combination()};
-        combColl.document(title)
+        combColl.document(id)
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
