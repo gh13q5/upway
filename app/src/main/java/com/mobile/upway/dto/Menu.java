@@ -4,13 +4,15 @@ public class Menu {
     String name;
     int kcal;
     int price;
+    String imgUrl;
 
     public Menu(){}
 
-    public Menu(String name, int kcal, int price) {
+    public Menu(String name, int kcal, int price, String imgUrl) {
         this.name = name;
         this.kcal = kcal;
         this.price = price;
+        this.imgUrl = imgUrl;
     }
 
     public String getName() {
@@ -35,5 +37,13 @@ public class Menu {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getImgUrl(){
+        return imgUrl;
+    }
+
+    public void setImgUrl() {
+        this.imgUrl = imgUrl;
     }
 }

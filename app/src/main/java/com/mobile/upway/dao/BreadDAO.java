@@ -43,10 +43,10 @@ public class BreadDAO {
                             for (Map.Entry<String, Object> entry : data.entrySet()) {
                                 switch (entry.getKey()) {
                                     case "name":
-                                        bread[0].setBread(entry.getValue().toString());
+                                        bread[0].setName(entry.getValue().toString());
                                         break;
                                     case "kcal":
-                                        bread[0].setBreadKcal(entry.getValue().toString());
+                                        bread[0].setKcal((Integer) entry.getValue());
                                         break;
                                 }
                             }

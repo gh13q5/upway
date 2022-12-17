@@ -79,7 +79,7 @@ public class CombinationDAO {
                                             // 수정 중 ...
                                             BreadDAO breadDAO = new BreadDAO();
                                             combination.setBread(breadDAO.findBreadById(entry.getValue().toString()));
-                                            Log.d(TAG, combination.getBread().getBread());
+                                            Log.d(TAG, combination.getBread().getName());
                                             break;
                                         case "cheese":
                                             CheeseDAO cheeseDAO = new CheeseDAO();

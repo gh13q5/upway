@@ -7,7 +7,7 @@
     android:gravity="center">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/itemimage"
         android:layout_width="100dp"
         android:layout_height="70dp"
         android:src="@drawable/italian_bmt"
@@ -15,6 +15,7 @@
         />
 
     <TextView
+        android:id="@+id/itemname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="샌드위치"
@@ -25,6 +26,7 @@
         />
 
     <TextView
+        android:id="@+id/itemkcalnprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="388 kcal / 6,100 won"

@@ -38,10 +38,10 @@ public class CheeseDAO {
                                 for (Map.Entry<String, Object> entry : data.entrySet()) {
                                     switch (entry.getKey()) {
                                         case "name":
-                                            cheese[0].setCheese(entry.getValue().toString());
+                                            cheese[0].setName(entry.getValue().toString());
                                             break;
                                         case "kcal":
-                                            cheese[0].setCheeseKcal(entry.getValue().toString());
+                                            cheese[0].setKcal(Integer.parseInt(entry.getValue().toString()));
                                             break;
                                     }
                                 }
