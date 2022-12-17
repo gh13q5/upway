@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.my_sub_btn:
                 // 임시로 login 페이지랑 연결시켜놓음
-                Intent myIntent = new Intent(this, LoginActivity.class);
+                Intent myIntent = new Intent(this, SelectLoginActivity.class);
                 startActivity(myIntent);
                 break;
             case R.id.best_sub_btn:
@@ -55,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayCombList(RecyclerView recyclerView){
+/*
         combDAO = new CombinationDAO();
         combDAO.getAllComb(recyclerView);
+
+
+ */
     }
 }

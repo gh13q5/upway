@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         idForm = (EditText) findViewById(R.id.id_form);
         pwdForm = (EditText) findViewById(R.id.pwd_form);
 
-        loginBtn = findViewById(R.id.login_btn);
+        loginBtn = findViewById(R.id.login_form_btn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

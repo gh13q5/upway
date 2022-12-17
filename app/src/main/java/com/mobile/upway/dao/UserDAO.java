@@ -64,4 +64,8 @@ public class UserDAO {
                 });
         return user[0];
     }
+
+    public void createUser(User user, String uid) {
+        db.collection("user").document(uid).set(user);
+    }
 }

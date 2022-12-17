@@ -4,6 +4,7 @@ public class Cheese {
 
     public String name;
     public int kcal;
+    public String imgUrl;
 
     public Cheese() {
     }
@@ -11,6 +12,12 @@ public class Cheese {
     public Cheese(String name, int kcal) {
         this.name = name;
         this.kcal = kcal;
+    }
+
+    public Cheese(String name, int kcal, String imgUrl) {
+        this.name = name;
+        this.kcal = kcal;
+        this.imgUrl = imgUrl;
     }
 
     public String getName() {
@@ -27,5 +34,13 @@ public class Cheese {
 
     public void setKcal(int kcal) {
         this.kcal = kcal;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

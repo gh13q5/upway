@@ -7,9 +7,11 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mobile.upway.dto.Bread;
 import com.mobile.upway.dto.Menu;
 import com.mobile.upway.dto.User;
 
@@ -26,31 +28,16 @@ public class MenuDAO {
         menuColl = db.collection("sandwich");
     }
 
-    public Menu findMenuByName(String name) {
+    public Menu findMenuById(String menuId) {
         Menu[] menu = {null};
-        menuColl.whereEqualTo("name", name)
+        menuColl.document(menuId)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                menu[0] = new Menu();
-                                Map<String, Object> data = document.getData();
-                                for (Map.Entry<String, Object> entry : data.entrySet()) {
-                                    switch (entry.getKey()) {
-                                        case "name":
-                                            menu[0].setName(entry.getValue().toString());
-                                            break;
-                                        case "kcal":
-                                            menu[0].setKcal(Integer.parseInt(entry.getValue().toString()));
-                                            break;
-                                        case "price":
-                                            menu[0].setPrice(Integer.parseInt(entry.getValue().toString()));
-                                            break;
-                                    }
-                                }
-                            }
+                            DocumentSnapshot document = task.getResult();
+                            menu[0] = document.toObject(Menu.class);
                         } else {
                             Log.d(TAG, "No such menu");
                         }

@@ -53,7 +53,7 @@ public class CombListAdapter extends RecyclerView.Adapter<CombListAdapter.ViewHo
         holder.cheese.setText(comb.getCheese().getName());
         holder.vege.setText(comb.getVegetableList().get(0).getName());
         holder.sauce.setText(comb.getSauceList().get(0).getKcal());
-        holder.options.setText(comb.getOptionsList().get(0).getOptions());
+        holder.options.setText(comb.getOptionsList().get(0).getName());
     }
 
     @Override

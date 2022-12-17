@@ -5,9 +5,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mobile.upway.dto.Bread;
 import com.mobile.upway.dto.Sauce;
 
 import java.util.Map;
@@ -24,28 +26,16 @@ public class SauceDAO {
         saucecol = db.collection("sauce");
     }
 
-    public Sauce findSauceByName(String saucename){
+    public Sauce findSauceById(String sauceId){
         Sauce[] sauce = {null};
-        saucecol.whereEqualTo("name", saucename)
+        saucecol.document(sauceId)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                sauce[0] = new Sauce();
-                                Map<String, Object> data = document.getData();
-                                for (Map.Entry<String, Object> entry : data.entrySet()) {
-                                    switch (entry.getKey()) {
-                                        case "name":
-                                            sauce[0].setName(entry.getValue().toString());
-                                            break;
-                                        case "kcal":
-                                            sauce[0].setKcal(Integer.parseInt(entry.getValue().toString()));
-                                            break;
-                                    }
-                                }
-                            }
+                            DocumentSnapshot document = task.getResult();
+                            sauce[0] = document.toObject(Sauce.class);
                         }
                     }
                 });

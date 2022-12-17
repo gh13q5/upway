@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/login_form_bg"
+        android:id="@+id/regist_form_bg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#01963E"
@@ -15,7 +15,7 @@
         android:paddingLeft="30dp"
         android:paddingTop="40dp"
         android:paddingRight="30dp"
-        android:paddingBottom="40dp"
+        android:paddingBottom="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -27,17 +27,17 @@
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
             android:paddingLeft="10dp"
-            android:text="어서오세요!"
+            android:text="UPWAY에 어서오세요!"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/id_form"
+            android:id="@+id/regist_id_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/list_card_shape"
             android:ems="10"
-            android:hint="아이디"
+            android:hint="이메일"
             android:inputType="textPersonName"
             android:paddingLeft="15dp"
             android:paddingTop="20dp"
@@ -46,7 +46,7 @@
             android:textColorHint="#898989" />
 
         <EditText
-            android:id="@+id/pwd_form"
+            android:id="@+id/regist_pwd_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -60,23 +60,38 @@
             android:paddingBottom="20dp"
             android:textColorHint="#898989" />
 
+        <EditText
+            android:id="@+id/regist_nickname_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/list_card_shape"
+            android:ems="10"
+            android:hint="닉네임"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingTop="20dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="20dp"
+            android:textColorHint="#898989" />
+
     </LinearLayout>
 
     <TextView
-        android:id="@+id/login_form_btn"
+        android:id="@+id/regist_form_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|right"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="380dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:background="@drawable/list_card_detail_yellow_shape"
         android:gravity="center"
+        android:onClick="onClick"
         android:paddingLeft="35dp"
         android:paddingTop="15dp"
         android:paddingRight="35dp"
         android:paddingBottom="15dp"
-        android:text="로그인"
+        android:text="회원 가입"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
