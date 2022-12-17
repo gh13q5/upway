@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/choice_bread"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F3F3"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/create_header"
+        layout="@layout/create_comb_top"> </include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/create_header"
+        android:layout_above="@id/list_bottom_square">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/choice_bread_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/list_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_below="@id/choice_bread_list"
+            android:hint="코멘트"
+            android:maxLength="5"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/list_bottom_square"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FEC70B"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/sandwich_price"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="5"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="388 kcal"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <android.widget.Button
+            android:id="@+id/ad_btn_upload"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:text="등록"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#01963E"
+            android:gravity="center"
+            android:background="@drawable/create_menu_circle_button"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
