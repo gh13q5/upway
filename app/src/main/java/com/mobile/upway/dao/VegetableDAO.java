@@ -1,6 +1,9 @@
 package com.mobile.upway.dao;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
@@ -9,13 +12,15 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mobile.upway.controller.FireStoreCallback;
 import com.mobile.upway.dto.Bread;
+import com.mobile.upway.dto.Cheese;
 import com.mobile.upway.dto.Vegetable;
 
 import java.util.Map;
 
 public class VegetableDAO {
-
+    public static String TAG = "VegetableDAO";
     private DatabaseReference databaseReference;
 
     private FirebaseFirestore db;
@@ -26,20 +31,17 @@ public class VegetableDAO {
         vegetablecol = db.collection("vegetable");
     }
 
-    public Vegetable findVegetableById(String vegeId){
-        Vegetable[] vegetable = {null};
+    public void findVegetableById(String vegeId, FireStoreCallback fireStoreCallback) {
         vegetablecol.document(vegeId)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            vegetable[0] = document.toObject(Vegetable.class);
-                        }
+                    public void onSuccess(DocumentSnapshot document) {
+                        Vegetable vegetable = document.toObject(Vegetable.class);
+                        Log.d(TAG, vegetable.getName());
+                        fireStoreCallback.onCallback(vegetable);
                     }
                 });
-        return vegetable[0];
     }
 
     public Query getVegetable(){

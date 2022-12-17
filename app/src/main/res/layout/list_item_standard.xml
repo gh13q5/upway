@@ -176,38 +176,6 @@
                 android:textColor="#01963E"
                 android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/vege_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/list_card_detail_green_shape"
-                android:paddingLeft="13dp"
-                android:paddingTop="7dp"
-                android:paddingRight="13dp"
-                android:paddingBottom="7dp"
-                android:text="-토마토"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/vege_item2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/list_card_detail_green_shape"
-                android:paddingLeft="13dp"
-                android:paddingTop="7dp"
-                android:paddingRight="13dp"
-                android:paddingBottom="7dp"
-                android:text="-피클"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -231,38 +199,6 @@
                 android:textColor="#FEC70B"
                 android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/sauce_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/list_card_detail_yellow_shape"
-                android:paddingLeft="13dp"
-                android:paddingTop="7dp"
-                android:paddingRight="13dp"
-                android:paddingBottom="7dp"
-                android:text="스모크 바비큐"
-                android:textColor="#383838"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/sauce_item2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/list_card_detail_yellow_shape"
-                android:paddingLeft="13dp"
-                android:paddingTop="7dp"
-                android:paddingRight="13dp"
-                android:paddingBottom="7dp"
-                android:text="스위트 칠리"
-                android:textColor="#383838"
-                android:textSize="13sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -284,22 +220,6 @@
                 android:textColor="#000000"
                 android:textSize="13sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/option_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/list_card_detail_green_shape"
-                android:paddingLeft="13dp"
-                android:paddingTop="7dp"
-                android:paddingRight="13dp"
-                android:paddingBottom="7dp"
-                android:text="에그마요"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp" />
 
         </LinearLayout>
     </LinearLayout>

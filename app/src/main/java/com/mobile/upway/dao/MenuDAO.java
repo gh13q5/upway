@@ -5,12 +5,14 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mobile.upway.controller.FireStoreCallback;
 import com.mobile.upway.dto.Bread;
 import com.mobile.upway.dto.Menu;
 import com.mobile.upway.dto.User;
@@ -28,21 +30,16 @@ public class MenuDAO {
         menuColl = db.collection("sandwich");
     }
 
-    public Menu findMenuById(String menuId) {
-        Menu[] menu = {null};
+    public void findMenuById(String menuId, FireStoreCallback fireStoreCallback) {
         menuColl.document(menuId)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            menu[0] = document.toObject(Menu.class);
-                        } else {
-                            Log.d(TAG, "No such menu");
-                        }
+                    public void onSuccess(DocumentSnapshot document) {
+                        Menu menu = document.toObject(Menu.class);
+                        Log.d(TAG, menu.getName());
+                        fireStoreCallback.onCallback(menu);
                     }
                 });
-        return menu[0];
     }
 }

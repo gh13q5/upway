@@ -8,12 +8,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.mobile.upway.R;
 import com.mobile.upway.dao.CombinationDAO;
 import com.mobile.upway.dto.Combination;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,11 +57,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayCombList(RecyclerView recyclerView){
-/*
         combDAO = new CombinationDAO();
-        combDAO.getAllComb(recyclerView);
+        adapter = new CombListAdapter();
 
-
- */
+        combDAO.getAllComb(combList -> {
+            Log.d(TAG, "combinationList 크기 : " + combList.size());
+            adapter.setList((ArrayList<Combination>) combList);
+            recyclerView.setAdapter(adapter);
+        });
     }
 }
