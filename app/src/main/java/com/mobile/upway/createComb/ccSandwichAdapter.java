@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.mobile.upway.R;
 import com.mobile.upway.dto.Menu;
 
@@ -26,6 +27,8 @@ public class ccSandwichAdapter extends RecyclerView.Adapter<ccSandwichAdapter.Vi
     public ccSandwichAdapter(){
         arrayList = new ArrayList<>();
     }
+
+    private FirebaseAuth firebaseAuth;
 
     @NonNull
     @Override
