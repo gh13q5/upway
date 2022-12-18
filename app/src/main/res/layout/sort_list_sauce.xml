@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sauce_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/sauce_menu_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F3F3F3"
+        android:orientation="vertical"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:id="@+id/blackPepper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="후추"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/honeyMustard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="허니 머스타드"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/horseradish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="홀스래디쉬"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/hotChilli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="핫 칠리"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/italianDressing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="이탈리안 드레싱"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/mayonnaise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="마요네즈"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/newSouthwestChipotle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="NEW 사우스웨스트 치폴레"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/oliveOil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="올리브 오일"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/ranch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="랜치"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/redWineVinaigrette"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="레드와인식초"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/salt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="소금"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/smokeBBQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="스모크 바비큐"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/sweetChilli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="스위트 칠리"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/sweetOnion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="스위트 어니언"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/yellowMustard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="머스타드"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

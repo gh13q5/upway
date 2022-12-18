@@ -7,58 +7,69 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/login_form_bg"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#01963E"
         android:orientation="vertical"
-        android:paddingLeft="30dp"
-        android:paddingTop="40dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/form_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="25dp"
-            android:paddingLeft="10dp"
-            android:text="어서오세요!"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+        <com.mobile.upway.customLayout.TitleBarInflater
+            android:id="@+id/include_title_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/id_form"
+        <LinearLayout
+            android:id="@+id/login_form_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/list_card_shape"
-            android:ems="10"
-            android:hint="아이디"
-            android:inputType="textPersonName"
-            android:paddingLeft="15dp"
-            android:paddingTop="20dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="20dp"
-            android:textColorHint="#898989" />
+            android:background="#01963E"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingTop="40dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="40dp">
 
-        <EditText
-            android:id="@+id/pwd_form"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/list_card_shape"
-            android:ems="10"
-            android:hint="패스워드"
-            android:inputType="textPassword"
-            android:paddingLeft="15dp"
-            android:paddingTop="20dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="20dp"
-            android:textColorHint="#898989" />
+            <TextView
+                android:id="@+id/form_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                android:paddingLeft="10dp"
+                android:text="어서오세요!"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/id_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_card_shape"
+                android:ems="10"
+                android:hint="아이디"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingTop="20dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="20dp"
+                android:textColorHint="#898989" />
+
+            <EditText
+                android:id="@+id/pwd_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/list_card_shape"
+                android:ems="10"
+                android:hint="패스워드"
+                android:inputType="textPassword"
+                android:paddingLeft="15dp"
+                android:paddingTop="20dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="20dp"
+                android:textColorHint="#898989" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -67,9 +78,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|right"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="350dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:background="@drawable/list_card_detail_yellow_shape"
         android:gravity="center"
         android:paddingLeft="35dp"

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/options_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/option_menu_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F3F3F3"
+        android:orientation="vertical"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:id="@+id/avocado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="아보카도"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/bacon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="베이컨"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/doubleCheese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="더블치즈"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/doubleUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="더블업"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/eggmayo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="에그마요"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/omelet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="오믈렛"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/pepperoni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="페퍼로니"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</LinearLayout>

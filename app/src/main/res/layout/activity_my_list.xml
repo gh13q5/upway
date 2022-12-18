@@ -8,14 +8,18 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="end" >
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:id="@+id/list_view_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#DBDBDB"
         android:orientation="vertical"
         tools:context=".view.MainActivity">
+
+        <com.mobile.upway.customLayout.TitleBarInflater
+            android:id="@+id/include_title_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:id="@+id/list_view_header"
@@ -36,20 +40,10 @@
                 android:textColor="#FFFFFF"
                 android:textSize="17sp" />
 
-            <ImageView
-                android:id="@+id/header_sort_button"
-                android:layout_width="0dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                app:srcCompat="@drawable/icon_sort" />
-
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list"
+            android:id="@+id/my_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

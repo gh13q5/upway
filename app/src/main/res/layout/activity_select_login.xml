@@ -6,40 +6,52 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/login_form_bg"
-        android:layout_width="0dp"
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#01963E"
         android:orientation="vertical"
-        android:paddingLeft="30dp"
-        android:paddingTop="40dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/login_text1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="5dp"
-            android:paddingLeft="10dp"
-            android:text="로그인 해주세요."
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+        <com.mobile.upway.customLayout.TitleBarInflater
+            android:id="@+id/include_title_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/login_text2"
+        <LinearLayout
+            android:id="@+id/login_form_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="25dp"
-            android:paddingLeft="10dp"
-            android:text="아직 회원이 아니신가요?"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:background="#01963E"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingTop="40dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="60dp">
+
+            <TextView
+                android:id="@+id/login_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="10dp"
+                android:text="로그인 해주세요."
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/login_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
+                android:paddingLeft="10dp"
+                android:text="아직 회원이 아니신가요?"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -47,12 +59,12 @@
         android:id="@+id/login_btn_group"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="250dp"
         android:gravity="top"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/login_form_bg">
+        app:layout_constraintTop_toTopOf="@+id/top_layout">
 
         <TextView
             android:id="@+id/regist_form_btn"

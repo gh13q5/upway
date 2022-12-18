@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sandwich_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/sandwich_menu_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F3F3F3"
+        android:orientation="vertical"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:id="@+id/BLT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="비엘티"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/KBBQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="K-바베큐"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/chickenBaconAvocado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="치킨 베이컨 아보카도"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/chickenSlice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="치킨 슬라이스"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/chickenTeriyaki"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="치킨 데리야끼"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/eggMayo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="에그마요"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/ham"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="햄"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/italianBMT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="이탈리안 비엠티"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/pulledPorkBarbecue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="풀드 포크 바비큐"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/roastChicken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="로스트 치킨"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/rotisserieBarbecueChicken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="로티세리 바비큐 치킨"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/shirmp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="쉬림프"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/spicyBBQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="스파이시 바비큐"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/spicyItalian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="스파이시 이탈리안"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/steaknCheese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="스테이크 &amp; 치즈"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/subwayClub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="써브웨이 클럽"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tuna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="참치"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/vege"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp"
+            android:text="베지"
+            android:textColor="#383838"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -16,6 +17,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mobile.upway.controller.FireStoreCallback;
+import com.mobile.upway.dto.Bread;
 import com.mobile.upway.dto.Cheese;
 import com.mobile.upway.dto.User;
 
@@ -65,7 +68,22 @@ public class UserDAO {
         return user[0];
     }
 
+    public void findUserByUid(String uid, FireStoreCallback fireStoreCallback) {
+        userColl.document(uid)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot document) {
+                        User user = document.toObject(User.class);
+                        Log.d(TAG, user.getUserId());
+                        fireStoreCallback.onCallback(user);
+                    }
+                });
+    }
+
     public void createUser(User user, String uid) {
         db.collection("user").document(uid).set(user);
     }
+
+    public void deleteUser(String uid, FireStoreCallback fireStoreCallback) { db.collection("user").document(uid).delete(); }
 }
