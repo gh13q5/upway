@@ -13,9 +13,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile.upway.controller.FireStoreCallback;
-import com.mobile.upway.dto.Bread;
+import com.mobile.upway.createComb.FireStoreSauceListCallback;
 import com.mobile.upway.dto.Sauce;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class SauceDAO {
@@ -28,6 +30,42 @@ public class SauceDAO {
     public SauceDAO(){
         db = FirebaseFirestore.getInstance();
         saucecol = db.collection("sauce");
+    }
+
+    public void getAllSauce(FireStoreSauceListCallback fireStoreSauceListCallback) {
+        List<Sauce> sauceList = new ArrayList<>();
+
+        saucecol.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Sauce sauce = new Sauce();
+
+                                Map<String, Object> data = document.getData();
+                                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                    switch (entry.getKey()) {
+                                        case "name":
+                                            sauce.setName(entry.getValue().toString());
+                                            break;
+                                        case "kcal":
+                                            sauce.setKcal(Double.parseDouble(entry.getValue().toString()));
+                                            break;
+                                        case "imgUrl":
+                                            sauce.setImgUrl(entry.getValue().toString());
+                                            break;
+                                    }
+                                }
+                                sauceList.add(sauce);
+                                Log.d(TAG, sauce.getName());
+                            }
+                            fireStoreSauceListCallback.onCallbackSauceList(sauceList);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 
     public void findSauceById(String sauceId, FireStoreCallback fireStoreCallback) {

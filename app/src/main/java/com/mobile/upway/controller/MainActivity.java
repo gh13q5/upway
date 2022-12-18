@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import com.mobile.upway.R;
+import com.mobile.upway.createComb.ccCheeseActivity;
+import com.mobile.upway.createComb.ccSandwichActivity;
 import com.mobile.upway.dao.CombinationDAO;
 import com.mobile.upway.dto.Combination;
 
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.my_sub_btn:
                 // 임시로 login 페이지랑 연결시켜놓음
-                Intent myIntent = new Intent(this, SelectLoginActivity.class);
+                Intent myIntent = new Intent(this, ccSandwichActivity.class);
                 startActivity(myIntent);
                 break;
             case R.id.best_sub_btn:

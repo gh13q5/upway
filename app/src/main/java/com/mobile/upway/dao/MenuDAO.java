@@ -14,6 +14,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile.upway.controller.FireStoreCallback;
+import com.mobile.upway.createComb.FireStoreSandListCallback;
 import com.mobile.upway.controller.FireStoreListCallback;
 import com.mobile.upway.dto.Bread;
 import com.mobile.upway.dto.Cheese;
@@ -37,6 +38,46 @@ public class MenuDAO {
     public MenuDAO() {
         db = FirebaseFirestore.getInstance();
         menuColl = db.collection("sandwich");
+    }
+
+    public void getAllMenu(FireStoreSandListCallback fireStoreSandListCallback) {
+        List<Menu> menuList = new ArrayList<>();
+
+        menuColl.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Menu menu = new Menu();
+
+                                Map<String, Object> data = document.getData();
+                                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                    switch (entry.getKey()) {
+                                        case "name":
+                                            menu.setName(entry.getValue().toString());
+                                            break;
+                                        case "kcal":
+                                            menu.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "price":
+                                            menu.setPrice(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "imgUrl":
+                                            menu.setImgUrl(entry.getValue().toString());
+                                            break;
+                                    }
+                                }
+                                //menu.setName(document.getId());
+                                menuList.add(menu);
+                                Log.d(TAG, menu.getName());
+                            }
+                            fireStoreSandListCallback.onCallbackMenuList(menuList);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 
     public void findMenuById(String menuId, FireStoreCallback fireStoreCallback) {

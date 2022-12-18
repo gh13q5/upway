@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/create_header"
-        android:layout_above="@id/vegetable_bottom_square"/>
+        android:layout_above="@id/vegetable_bottom_square"
+        android:layout_margin="5dp"/>
 
     <include
         android:id="@+id/vegetable_bottom_square"
