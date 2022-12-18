@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class Vegetable implements Serializable {
 
     public String name;
-    public int kcal;
+    public double kcal;
     public String imgUrl;
 
     public Vegetable() {
     }
 
-    public Vegetable(String name, int kcal, String imgUrl) {
+    public Vegetable(String name, double kcal, String imgUrl) {
         this.name = name;
         this.kcal = kcal;
         this.imgUrl = imgUrl;
@@ -25,11 +25,11 @@ public class Vegetable implements Serializable {
         this.name = name;
     }
 
-    public int getKcal() {
+    public double getKcal() {
         return kcal;
     }
 
-    public void setKcal(int kcal) {
+    public void setKcal(double kcal) {
         this.kcal = kcal;
     }
 

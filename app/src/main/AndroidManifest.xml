@@ -20,10 +20,14 @@
         <activity android:name=".controller.LoginActivity"></activity>
         <activity android:name=".controller.SelectLoginActivity"></activity>
         <activity android:name=".controller.RegistActivity"></activity>
-        <activity android:name=".controller.MypageActivity"></activity>
-        <activity android:name=".controller.MyCombListActivity"></activity>
-        <activity android:name=".controller.MyScrapCombListActivity"></activity>
         <activity android:name=".controller.BestSubActivity"></activity>
+        <activity android:name=".createComb.ccSandwichActivity"></activity>
+        <activity android:name=".createComb.ccBreadActivity"></activity>
+        <activity android:name=".createComb.ccCheeseActivity"></activity>
+        <activity android:name=".createComb.ccSauceActivity"></activity>
+        <activity android:name=".createComb.ccVegetableActivity"></activity>
+        <activity android:name=".createComb.ccAddActivity"></activity>
+        <activity android:name=".createComb.ccListActivity"></activity>
         <activity android:name=".controller.MyDetailActivity"></activity>
     </application>
 </manifest>

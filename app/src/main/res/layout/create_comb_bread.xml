@@ -10,14 +10,15 @@
 
     <include
         android:id="@+id/create_header"
-        layout="@layout/create_comb_top"> </include>
+        layout="@layout/create_comb_top"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/choice_bread_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/create_header"
-        android:layout_above="@id/bread_bottom_square"/>
+        android:layout_above="@id/bread_bottom_square"
+        android:layout_margin="5dp"/>
 
     <include
         android:id="@+id/bread_bottom_square"

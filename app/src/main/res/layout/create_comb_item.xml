@@ -1,38 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/list_card_shape">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/itemimage"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:src="@drawable/italian_bmt"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/itemname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="샌드위치"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/itemkcalnprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="388 kcal / 6,100 won"
+            android:textColor="#777777"
+            android:textSize="10sp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
 
     <ImageView
-        android:id="@+id/itemimage"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:src="@drawable/italian_bmt"
-        android:layout_gravity="center"
+        android:layout="@+id/checkimage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_check_24"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:visibility="invisible"
         />
 
-    <TextView
-        android:id="@+id/itemname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="샌드위치"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
+    <ImageView
+        android:layout="@+id/minusimage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_horizontal_rule_24"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:visibility="invisible"
         />
 
-    <TextView
-        android:id="@+id/itemkcalnprice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="388 kcal / 6,100 won"
-        android:textColor="#777777"
-        android:textSize="10sp"
-        android:layout_gravity="center"
-        />
-
-</LinearLayout>
+</RelativeLayout>

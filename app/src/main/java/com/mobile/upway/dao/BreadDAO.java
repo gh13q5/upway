@@ -10,16 +10,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mobile.upway.createComb.FireStoreBreadListCallback;
 import com.mobile.upway.controller.FireStoreCallback;
 import com.mobile.upway.dto.Bread;
-import com.mobile.upway.dto.Menu;
-import com.mobile.upway.dto.User;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class BreadDAO {
@@ -32,6 +32,42 @@ public class BreadDAO {
     public BreadDAO() {
         db = FirebaseFirestore.getInstance();
         breadcol = db.collection("bread");
+    }
+
+    public void getAllBread(FireStoreBreadListCallback fireStoreBreadListCallback) {
+        List<Bread> breadList = new ArrayList<>();
+
+        breadcol.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Bread bread = new Bread();
+
+                                Map<String, Object> data = document.getData();
+                                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                    switch (entry.getKey()) {
+                                        case "name":
+                                            bread.setName(entry.getValue().toString());
+                                            break;
+                                        case "kcal":
+                                            bread.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "imgUrl":
+                                            bread.setImgUrl(entry.getValue().toString());
+                                            break;
+                                    }
+                                }
+                                breadList.add(bread);
+                                Log.d(TAG, bread.getName());
+                            }
+                            fireStoreBreadListCallback.onCallbackBreadList(breadList);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 
     public void findBreadById(String breadId, FireStoreCallback fireStoreCallback) {

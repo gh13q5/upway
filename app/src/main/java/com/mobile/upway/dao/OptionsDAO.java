@@ -13,9 +13,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile.upway.controller.FireStoreCallback;
-import com.mobile.upway.dto.Bread;
+import com.mobile.upway.createComb.FireStoreOptionsListCallback;
 import com.mobile.upway.dto.Options;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class OptionsDAO {
@@ -28,6 +30,45 @@ public class OptionsDAO {
     public OptionsDAO(){
         db = FirebaseFirestore.getInstance();
         optionscol = db.collection("options");
+    }
+
+    public void getAllOptions(FireStoreOptionsListCallback fireStoreOptionsListCallback) {
+        List<Options> optionsList = new ArrayList<>();
+
+        optionscol.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Options options = new Options();
+
+                                Map<String, Object> data = document.getData();
+                                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                    switch (entry.getKey()) {
+                                        case "name":
+                                            options.setName(entry.getValue().toString());
+                                            break;
+                                        case "kcal":
+                                            options.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "price":
+                                            options.setPrice(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "imgUrl":
+                                            options.setImgUrl(entry.getValue().toString());
+                                            break;
+                                    }
+                                }
+                                optionsList.add(options);
+                                Log.d(TAG, options.getName());
+                            }
+                            fireStoreOptionsListCallback.onCallbackOptionsList(optionsList);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 
     public void findOptionsById(String optionsId, FireStoreCallback fireStoreCallback) {
