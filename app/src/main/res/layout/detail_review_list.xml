@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reviewTbl"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="200dp"
+    android:orientation="vertical"
     android:paddingBottom="15dp">
 
     <TextView
@@ -13,18 +15,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="-20dp"
         android:text="리뷰"
         android:textColor="#01963E"
         android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rListView"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        android:layout_marginTop="40dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

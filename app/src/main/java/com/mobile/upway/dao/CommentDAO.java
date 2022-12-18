@@ -13,6 +13,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mobile.upway.controller.FireStoreListCallback;
+import com.mobile.upway.dto.Combination;
 import com.mobile.upway.dto.Comment;
 
 import java.util.ArrayList;
@@ -29,9 +31,9 @@ public class CommentDAO {
         commentColl = db.collection("comment");
     }
     //read
-    public List<Comment> findCommentsByComb(String title){
+    public void findCommentsByComb(FireStoreListCallback fireStoreListCallback, String comb) {
         List<Comment> commentList = new ArrayList<>();
-        commentColl.whereEqualTo("combTitle", title)
+        commentColl.whereEqualTo("combination", comb)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -42,13 +44,14 @@ public class CommentDAO {
                                 comment = document.toObject(Comment.class);
                                 commentList.add(comment);
                             }
+                            fireStoreListCallback.onCallbackList(commentList);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
-        return commentList;
     }
+
     //write
     public void writeComment(Comment comment){
         commentColl.add(comment)

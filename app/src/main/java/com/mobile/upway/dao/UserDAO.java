@@ -20,6 +20,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile.upway.controller.FireStoreCallback;
 import com.mobile.upway.dto.Bread;
 import com.mobile.upway.dto.Cheese;
+import com.mobile.upway.dto.Comment;
+import com.mobile.upway.dto.Menu;
 import com.mobile.upway.dto.User;
 
 import java.util.Map;
@@ -28,11 +30,37 @@ public class UserDAO {
     public static String TAG = "UserDAO";
 
     private FirebaseFirestore db;
-    private CollectionReference userColl;
+    public CollectionReference userColl;
 
     public UserDAO() {
         db = FirebaseFirestore.getInstance();
         userColl = db.collection("user");
+    }
+    public void findUserById(String userId, FireStoreCallback fireStoreCallback){
+        userColl.whereEqualTo("userId", userId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                User user = new User();
+                                Map<String, Object> data = document.getData();
+                                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                    switch (entry.getKey()) {
+                                        case "userId":
+                                            user.setUserId(entry.getValue().toString());
+                                            break;
+                                        case "nickname":
+                                            user.setNickname(entry.getValue().toString());
+                                            break;
+                                    }
+                                }
+                                fireStoreCallback.onCallback(user);
+                            }
+                        }
+                    }
+                });
     }
 
     public User findUserById(String userId) {
