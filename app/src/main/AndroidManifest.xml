@@ -20,7 +20,11 @@
         <activity android:name=".controller.LoginActivity"></activity>
         <activity android:name=".controller.SelectLoginActivity"></activity>
         <activity android:name=".controller.RegistActivity"></activity>
+        <activity android:name=".controller.MypageActivity"></activity>
+        <activity android:name=".controller.MyCombListActivity"></activity>
+        <activity android:name=".controller.MyScrapCombListActivity"></activity>
         <activity android:name=".controller.BestSubActivity"></activity>
+        <activity android:name=".controller.MyDetailActivity"></activity>
     </application>
 </manifest>
 

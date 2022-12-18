@@ -13,6 +13,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile.upway.controller.CombListAdapter;
@@ -31,6 +32,7 @@ import org.w3c.dom.Document;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -46,10 +48,11 @@ public class CombinationDAO {
     }
 
     //Read
-    public void getAllComb(FireStoreListCallback fireStoreListCallback) {
+    public void getAllCombOrderByScraps(FireStoreListCallback fireStoreListCallback) {
         List<Combination> combinationList = new ArrayList<>();
 
-        combColl.get()
+        combColl.orderBy("scraps", Query.Direction.DESCENDING)
+                .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -60,6 +63,9 @@ public class CombinationDAO {
                                 Map<String, Object> data = document.getData();
                                 for (Map.Entry<String, Object> entry : data.entrySet()) {
                                     switch (entry.getKey()) {
+                                        case "imgUrl":
+                                            combination.setImgUrl(entry.getValue().toString());
+                                            break;
                                         case "title":
                                             combination.setTitle(entry.getValue().toString());
                                             break;
@@ -119,6 +125,489 @@ public class CombinationDAO {
                                             }
 
                                              */
+                                            break;
+                                        case "sauceList":
+                                            List<Sauce> sauceList = new ArrayList<>();
+                                            List<String> sauceNameList = (ArrayList<String>) entry.getValue();
+                                            for (String sauceName : sauceNameList) {
+                                                Sauce sauce = new Sauce();
+                                                sauce.setName(sauceName);
+                                                sauceList.add(sauce);
+                                            }
+                                            combination.setSauceList(sauceList);
+                                            break;
+                                        case "optionList":
+                                            List<Options> optionsList = new ArrayList<>();
+                                            List<String> opNameList = (ArrayList<String>) entry.getValue();
+                                            for (String opName : opNameList) {
+                                                Options options = new Options();
+                                                options.setName(opName);
+                                                optionsList.add(options);
+                                            }
+                                            combination.setOptionsList(optionsList);
+                                            break;
+                                    }
+                                }
+                                combination.setId(document.getId());
+                                combinationList.add(combination);
+                                Log.d(TAG, combination.getId());
+                            }
+                            fireStoreListCallback.onCallbackList(combinationList);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void get5CombListOrderByScraps(FireStoreListCallback fireStoreListCallback) {
+        List<Combination> combinationList = new ArrayList<>();
+
+        combColl.orderBy("scraps", Query.Direction.DESCENDING)
+                .limit(5)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Combination combination = new Combination();
+
+                                Map<String, Object> data = document.getData();
+                                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                    switch (entry.getKey()) {
+                                        case "imgUrl":
+                                            combination.setImgUrl(entry.getValue().toString());
+                                            Log.d(TAG, combination.getImgUrl());
+                                            break;
+                                        case "title":
+                                            combination.setTitle(entry.getValue().toString());
+                                            break;
+                                        case "description":
+                                            combination.setDescription(entry.getValue().toString());
+                                            break;
+                                        case "scraps":
+                                            combination.setScraps(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "kcal":
+                                            combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "price":
+                                            combination.setPrice(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "user":
+                                            User user = new User();
+                                            user.setUserId(entry.getValue().toString());
+                                            combination.setUser(user);
+                                            break;
+                                        case "menu":
+                                            Menu menu = new Menu();
+                                            menu.setName(entry.getValue().toString());
+                                            combination.setMenu(menu);
+                                            break;
+                                        case "bread":
+                                            Bread bread = new Bread();
+                                            bread.setName(entry.getValue().toString());
+                                            combination.setBread(bread);
+                                            break;
+                                        case "cheese":
+                                            Cheese cheese = new Cheese();
+                                            cheese.setName(entry.getValue().toString());
+                                            combination.setCheese(cheese);
+                                            break;
+                                        case "vegetableList":
+                                            List<Vegetable> vegeList = new ArrayList<>();
+                                            List<String> vegeNameList = (ArrayList<String>) entry.getValue();
+                                            for (String vegeName : vegeNameList) {
+                                                Vegetable vege = new Vegetable();
+                                                vege.setName(vegeName);
+                                                vegeList.add(vege);
+                                            }
+                                            combination.setVegetableList(vegeList);
+                                            break;
+                                        case "sauceList":
+                                            List<Sauce> sauceList = new ArrayList<>();
+                                            List<String> sauceNameList = (ArrayList<String>) entry.getValue();
+                                            for (String sauceName : sauceNameList) {
+                                                Sauce sauce = new Sauce();
+                                                sauce.setName(sauceName);
+                                                sauceList.add(sauce);
+                                            }
+                                            combination.setSauceList(sauceList);
+                                            break;
+                                        case "optionList":
+                                            List<Options> optionsList = new ArrayList<>();
+                                            List<String> opNameList = (ArrayList<String>) entry.getValue();
+                                            for (String opName : opNameList) {
+                                                Options options = new Options();
+                                                options.setName(opName);
+                                                optionsList.add(options);
+                                            }
+                                            combination.setOptionsList(optionsList);
+                                            break;
+                                    }
+                                }
+                                combination.setId(document.getId());
+                                combinationList.add(combination);
+                                Log.d(TAG, combination.getId());
+                            }
+                            fireStoreListCallback.onCallbackList(combinationList);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void getCombById(String combId, FireStoreCallback fireStoreCallback) {
+        combColl.document(combId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Combination combination = new Combination();
+
+                            DocumentSnapshot document = task.getResult();
+                            Map<String, Object> data = document.getData();
+                            for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                switch (entry.getKey()) {
+                                    case "imgUrl":
+                                        combination.setImgUrl(entry.getValue().toString());
+                                        break;
+                                    case "title":
+                                        combination.setTitle(entry.getValue().toString());
+                                        break;
+                                    case "description":
+                                        combination.setDescription(entry.getValue().toString());
+                                        break;
+                                    case "scraps":
+                                        combination.setScraps(Integer.parseInt(entry.getValue().toString()));
+                                        break;
+                                    case "kcal":
+                                        combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                        break;
+                                    case "price":
+                                        combination.setPrice(Integer.parseInt(entry.getValue().toString()));
+                                        break;
+                                    case "user":
+                                        User user = new User();
+                                        user.setUserId(entry.getValue().toString());
+                                        combination.setUser(user);
+                                        break;
+                                    case "menu":
+                                        Menu menu = new Menu();
+                                        menu.setName(entry.getValue().toString());
+                                        combination.setMenu(menu);
+                                        break;
+                                    case "bread":
+                                        Bread bread = new Bread();
+                                        bread.setName(entry.getValue().toString());
+                                        combination.setBread(bread);
+                                        break;
+                                    case "cheese":
+                                        Cheese cheese = new Cheese();
+                                        cheese.setName(entry.getValue().toString());
+                                        combination.setCheese(cheese);
+                                        break;
+                                    case "vegetableList":
+                                        List<Vegetable> vegeList = new ArrayList<>();
+                                        List<String> vegeNameList = (ArrayList<String>) entry.getValue();
+                                        for (String vegeName : vegeNameList) {
+                                            Vegetable vege = new Vegetable();
+                                            vege.setName(vegeName);
+                                            vegeList.add(vege);
+                                        }
+                                        combination.setVegetableList(vegeList);
+                                        break;
+                                    case "sauceList":
+                                        List<Sauce> sauceList = new ArrayList<>();
+                                        List<String> sauceNameList = (ArrayList<String>) entry.getValue();
+                                        for (String sauceName : sauceNameList) {
+                                            Sauce sauce = new Sauce();
+                                            sauce.setName(sauceName);
+                                            sauceList.add(sauce);
+                                        }
+                                        combination.setSauceList(sauceList);
+                                        break;
+                                    case "optionList":
+                                        List<Options> optionsList = new ArrayList<>();
+                                        List<String> opNameList = (ArrayList<String>) entry.getValue();
+                                        for (String opName : opNameList) {
+                                            Options options = new Options();
+                                            options.setName(opName);
+                                            optionsList.add(options);
+                                        }
+                                        combination.setOptionsList(optionsList);
+                                        break;
+                                }
+                            }
+                            combination.setId(document.getId());
+                            Log.d(TAG, combination.getId());
+                            fireStoreCallback.onCallback(combination);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void getCombListByUser(String userId, FireStoreListCallback fireStoreListCallback) {
+        List<Combination> combinationList = new ArrayList<>();
+
+        combColl.whereEqualTo("user", userId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Combination combination = new Combination();
+
+                                Map<String, Object> data = document.getData();
+                                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                    switch (entry.getKey()) {
+                                        case "imgUrl":
+                                            combination.setImgUrl(entry.getValue().toString());
+                                            break;
+                                        case "title":
+                                            combination.setTitle(entry.getValue().toString());
+                                            break;
+                                        case "description":
+                                            combination.setDescription(entry.getValue().toString());
+                                            break;
+                                        case "scraps":
+                                            combination.setScraps(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "kcal":
+                                            combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "price":
+                                            combination.setPrice(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "user":
+                                            User user = new User();
+                                            user.setUserId(entry.getValue().toString());
+                                            combination.setUser(user);
+                                            break;
+                                        case "menu":
+                                            Menu menu = new Menu();
+                                            menu.setName(entry.getValue().toString());
+                                            combination.setMenu(menu);
+                                            break;
+                                        case "bread":
+                                            Bread bread = new Bread();
+                                            bread.setName(entry.getValue().toString());
+                                            combination.setBread(bread);
+                                            break;
+                                        case "cheese":
+                                            Cheese cheese = new Cheese();
+                                            cheese.setName(entry.getValue().toString());
+                                            combination.setCheese(cheese);
+                                            break;
+                                        case "vegetableList":
+                                            List<Vegetable> vegeList = new ArrayList<>();
+                                            List<String> vegeNameList = (ArrayList<String>) entry.getValue();
+                                            for (String vegeName : vegeNameList) {
+                                                Vegetable vege = new Vegetable();
+                                                vege.setName(vegeName);
+                                                vegeList.add(vege);
+                                            }
+                                            combination.setVegetableList(vegeList);
+                                            break;
+                                        case "sauceList":
+                                            List<Sauce> sauceList = new ArrayList<>();
+                                            List<String> sauceNameList = (ArrayList<String>) entry.getValue();
+                                            for (String sauceName : sauceNameList) {
+                                                Sauce sauce = new Sauce();
+                                                sauce.setName(sauceName);
+                                                sauceList.add(sauce);
+                                            }
+                                            combination.setSauceList(sauceList);
+                                            break;
+                                        case "optionList":
+                                            List<Options> optionsList = new ArrayList<>();
+                                            List<String> opNameList = (ArrayList<String>) entry.getValue();
+                                            for (String opName : opNameList) {
+                                                Options options = new Options();
+                                                options.setName(opName);
+                                                optionsList.add(options);
+                                            }
+                                            combination.setOptionsList(optionsList);
+                                            break;
+                                    }
+                                }
+                                combination.setId(document.getId());
+                                combinationList.add(combination);
+                                Log.d(TAG, combination.getId());
+                            }
+                            fireStoreListCallback.onCallbackList(combinationList);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void getCombListInclude(String field, String condition, FireStoreListCallback fireStoreListCallback) {
+        List<Combination> combinationList = new ArrayList<>();
+
+        combColl.whereIn(field, Arrays.asList(condition))
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Combination combination = new Combination();
+
+                                Map<String, Object> data = document.getData();
+                                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                    switch (entry.getKey()) {
+                                        case "imgUrl":
+                                            combination.setImgUrl(entry.getValue().toString());
+                                            break;
+                                        case "title":
+                                            combination.setTitle(entry.getValue().toString());
+                                            break;
+                                        case "description":
+                                            combination.setDescription(entry.getValue().toString());
+                                            break;
+                                        case "scraps":
+                                            combination.setScraps(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "kcal":
+                                            combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "price":
+                                            combination.setPrice(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "user":
+                                            User user = new User();
+                                            user.setUserId(entry.getValue().toString());
+                                            combination.setUser(user);
+                                            break;
+                                        case "menu":
+                                            Menu menu = new Menu();
+                                            menu.setName(entry.getValue().toString());
+                                            combination.setMenu(menu);
+                                            break;
+                                        case "bread":
+                                            Bread bread = new Bread();
+                                            bread.setName(entry.getValue().toString());
+                                            combination.setBread(bread);
+                                            break;
+                                        case "cheese":
+                                            Cheese cheese = new Cheese();
+                                            cheese.setName(entry.getValue().toString());
+                                            combination.setCheese(cheese);
+                                            break;
+                                        case "vegetableList":
+                                            List<Vegetable> vegeList = new ArrayList<>();
+                                            List<String> vegeNameList = (ArrayList<String>) entry.getValue();
+                                            for (String vegeName : vegeNameList) {
+                                                Vegetable vege = new Vegetable();
+                                                vege.setName(vegeName);
+                                                vegeList.add(vege);
+                                            }
+                                            combination.setVegetableList(vegeList);
+                                            break;
+                                        case "sauceList":
+                                            List<Sauce> sauceList = new ArrayList<>();
+                                            List<String> sauceNameList = (ArrayList<String>) entry.getValue();
+                                            for (String sauceName : sauceNameList) {
+                                                Sauce sauce = new Sauce();
+                                                sauce.setName(sauceName);
+                                                sauceList.add(sauce);
+                                            }
+                                            combination.setSauceList(sauceList);
+                                            break;
+                                        case "optionList":
+                                            List<Options> optionsList = new ArrayList<>();
+                                            List<String> opNameList = (ArrayList<String>) entry.getValue();
+                                            for (String opName : opNameList) {
+                                                Options options = new Options();
+                                                options.setName(opName);
+                                                optionsList.add(options);
+                                            }
+                                            combination.setOptionsList(optionsList);
+                                            break;
+                                    }
+                                }
+                                combination.setId(document.getId());
+                                combinationList.add(combination);
+                                Log.d(TAG, combination.getId());
+                            }
+                            fireStoreListCallback.onCallbackList(combinationList);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void getCombListIncludeInArray(String field, String condition, FireStoreListCallback fireStoreListCallback) {
+        List<Combination> combinationList = new ArrayList<>();
+
+        combColl.whereArrayContainsAny(field, Arrays.asList(condition))
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Combination combination = new Combination();
+
+                                Map<String, Object> data = document.getData();
+                                for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                    switch (entry.getKey()) {
+                                        case "imgUrl":
+                                            combination.setImgUrl(entry.getValue().toString());
+                                            break;
+                                        case "title":
+                                            combination.setTitle(entry.getValue().toString());
+                                            break;
+                                        case "description":
+                                            combination.setDescription(entry.getValue().toString());
+                                            break;
+                                        case "scraps":
+                                            combination.setScraps(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "kcal":
+                                            combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "price":
+                                            combination.setPrice(Integer.parseInt(entry.getValue().toString()));
+                                            break;
+                                        case "user":
+                                            User user = new User();
+                                            user.setUserId(entry.getValue().toString());
+                                            combination.setUser(user);
+                                            break;
+                                        case "menu":
+                                            Menu menu = new Menu();
+                                            menu.setName(entry.getValue().toString());
+                                            combination.setMenu(menu);
+                                            break;
+                                        case "bread":
+                                            Bread bread = new Bread();
+                                            bread.setName(entry.getValue().toString());
+                                            combination.setBread(bread);
+                                            break;
+                                        case "cheese":
+                                            Cheese cheese = new Cheese();
+                                            cheese.setName(entry.getValue().toString());
+                                            combination.setCheese(cheese);
+                                            break;
+                                        case "vegetableList":
+                                            List<Vegetable> vegeList = new ArrayList<>();
+                                            List<String> vegeNameList = (ArrayList<String>) entry.getValue();
+                                            for (String vegeName : vegeNameList) {
+                                                Vegetable vege = new Vegetable();
+                                                vege.setName(vegeName);
+                                                vegeList.add(vege);
+                                            }
+                                            combination.setVegetableList(vegeList);
                                             break;
                                         case "sauceList":
                                             List<Sauce> sauceList = new ArrayList<>();

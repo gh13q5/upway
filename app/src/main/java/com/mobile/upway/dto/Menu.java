@@ -1,6 +1,8 @@
 package com.mobile.upway.dto;
 
-public class Menu {
+import java.io.Serializable;
+
+public class Menu implements Serializable {
     public String name;
     public int kcal;
     public int price;
@@ -43,7 +45,7 @@ public class Menu {
         return imgUrl;
     }
 
-    public void setImgUrl() {
+    public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
 }

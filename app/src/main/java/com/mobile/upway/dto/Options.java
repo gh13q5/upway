@@ -1,6 +1,8 @@
 package com.mobile.upway.dto;
 
-public class Options {
+import java.io.Serializable;
+
+public class Options implements Serializable {
 
     public String name;
     public int price;

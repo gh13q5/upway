@@ -1,9 +1,11 @@
 package com.mobile.upway.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Combination {
+public class Combination implements Serializable {
     public String id;
+    public String imgUrl;
     public String title;
     public String description;
     public int scraps;
@@ -36,12 +38,37 @@ public class Combination {
         this.optionsList = optionsList;
     }
 
+    public Combination(String uid, String imgUrl, String title, String description, int scraps, int kcal, int price, User user, Menu menu, Bread bread, Cheese cheese, List<Vegetable> vegetableList, List<Sauce> sauceList, List<Options> optionsList) {
+        this.id = uid;
+        this.imgUrl = imgUrl;
+        this.title = title;
+        this.description = description;
+        this.scraps = scraps;
+        this.kcal = kcal;
+        this.price = price;
+        this.user = user;
+        this.menu = menu;
+        this.bread = bread;
+        this.cheese = cheese;
+        this.vegetableList = vegetableList;
+        this.sauceList = sauceList;
+        this.optionsList = optionsList;
+    }
+
     public String getId() {
         return id;
     }
 
     public void setId(String uid) {
         this.id = uid;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public String getTitle() {

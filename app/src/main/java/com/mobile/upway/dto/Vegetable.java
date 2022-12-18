@@ -1,6 +1,8 @@
 package com.mobile.upway.dto;
 
-public class Vegetable {
+import java.io.Serializable;
+
+public class Vegetable implements Serializable {
 
     public String name;
     public int kcal;
