@@ -29,6 +29,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="1.5dp" />
             <include
+                android:id="@+id/cbtbl"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/detail_breadcheese_tbl"
+                />
+            <ImageView
+                android:src="@drawable/dashline"
+                android:layerType="software"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp" />
+            <include
                 android:id="@+id/ingrtbl"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

@@ -144,4 +144,21 @@ public class MenuDAO {
                     }
                 });
     }
+
+    public void findMenuByName(String menuName, FireStoreCallback fireStoreCallback){
+        menuColl.whereEqualTo("name", menuName)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Menu menu = document.toObject(Menu.class);
+                                Log.d(TAG, menu.getName());
+                                fireStoreCallback.onCallback(menu);
+                            }
+                        }
+                    }
+                });
+    }
 }
