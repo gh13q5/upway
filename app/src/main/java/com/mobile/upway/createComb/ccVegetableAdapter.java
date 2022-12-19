@@ -16,15 +16,17 @@ import com.mobile.upway.R;
 import com.mobile.upway.dto.Cheese;
 import com.mobile.upway.dto.Vegetable;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ccVegetableAdapter extends RecyclerView.Adapter<ccVegetableAdapter.ViewHolder> {
 
     private ArrayList<Vegetable> vegetableList;
     private Context context;
+    double kcal;
 
     public interface onItemClickListener{
-        void onItemClicked(String data);
+        void onItemClicked(String data, double kcaldata);
     }
 
     private ccVegetableAdapter.onItemClickListener itemClickListener;
@@ -52,11 +54,14 @@ public class ccVegetableAdapter extends RecyclerView.Adapter<ccVegetableAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Vegetable vegetable = vegetableList.get(position);
+        kcal = vegetable.getKcal();
+        DecimalFormat df = new DecimalFormat("0.0");
+        String skcal = df.format(kcal);
         Glide.with(holder.itemView)
                 .load(vegetable.getImgUrl())
                 .into(holder.itemimage);
         holder.itemname.setText(vegetable.getName());
-        holder.kcalnprice.setText(vegetable.getKcal()+" kcal");
+        holder.kcalnprice.setText(skcal+"kcal");
     }
 
     @Override
@@ -86,7 +91,8 @@ public class ccVegetableAdapter extends RecyclerView.Adapter<ccVegetableAdapter.
                 public void onClick(View view){
                     //int pos = getAdapterPosition();
                     String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
-                    itemClickListener.onItemClicked(data);
+                    double kcaldata = kcal;
+                    itemClickListener.onItemClicked(data, kcaldata);
                 }
             });
         }

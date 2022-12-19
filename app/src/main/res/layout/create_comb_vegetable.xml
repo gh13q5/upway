@@ -7,15 +7,30 @@
     android:background="#F3F3F3"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/create_header"
-        layout="@layout/create_comb_top"> </include>
+    <LinearLayout
+        android:id="@+id/vege_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#01963E">
+
+        <TextView
+            android:id="@+id/create_menu_title"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="5"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="5dp"
+            android:text="야채 선택"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/choice_vegetable_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/create_header"
+        android:layout_below="@id/vege_top"
         android:layout_above="@id/vegetable_bottom_square"
         android:layout_margin="5dp"/>
 

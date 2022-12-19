@@ -30,6 +30,9 @@ public class ccSandwichActivity extends Activity {
 
     ArrayList<String> list = new ArrayList<>();
     String sandwich = "";
+    double kcal;
+    int price;
+    String url;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -47,8 +50,11 @@ public class ccSandwichActivity extends Activity {
         sandAdapter.setOnItemClickListener(
                 new ccSandwichAdapter.onItemClickListener(){
                     @Override
-                    public void onItemClicked(String data){
+                    public void onItemClicked(String data, int kcaldata, int pricedata, String urldata){
                         sandwich = data;
+                        kcal = Double.valueOf(kcaldata);
+                        price = pricedata;
+                        url = urldata;
                         textView.setVisibility(View.VISIBLE);
                         textView.setText(sandwich);
                     }
@@ -60,8 +66,12 @@ public class ccSandwichActivity extends Activity {
                 if(sandwich.length()>1){
                     Intent breadIntent = new Intent(getApplicationContext(),ccBreadActivity.class);
                     list.add(sandwich);
+                    Log.d("현재 칼로리 : " , String.valueOf(kcal));
                     breadIntent.putExtra("sandwich", sandwich);
                     breadIntent.putExtra("list", list);
+                    breadIntent.putExtra("kcal", kcal);
+                    breadIntent.putExtra("price", price);
+                    breadIntent.putExtra("url", url);
                     startActivity(breadIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), "샌드위치를 선택해주세요.", Toast.LENGTH_SHORT).show();

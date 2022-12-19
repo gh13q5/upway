@@ -9,7 +9,7 @@ public class Combination implements Serializable {
     public String title;
     public String description;
     public int scraps;
-    public int kcal;
+    public double kcal;
     public int price;
     public User user;
     public Menu menu;
@@ -22,7 +22,7 @@ public class Combination implements Serializable {
     public Combination() {
     }
 
-    public Combination(String uid,String title, String description, int scraps, int kcal, int price, User user, Menu menu, Bread bread, Cheese cheese, List<Vegetable> vegetableList, List<Sauce> sauceList, List<Options> optionsList) {
+    public Combination(String uid,String title, String description, int scraps, double kcal, int price, User user, Menu menu, Bread bread, Cheese cheese, List<Vegetable> vegetableList, List<Sauce> sauceList, List<Options> optionsList) {
         this.id = uid;
         this.title = title;
         this.description = description;
@@ -38,7 +38,7 @@ public class Combination implements Serializable {
         this.optionsList = optionsList;
     }
 
-    public Combination(String uid, String imgUrl, String title, String description, int scraps, int kcal, int price, User user, Menu menu, Bread bread, Cheese cheese, List<Vegetable> vegetableList, List<Sauce> sauceList, List<Options> optionsList) {
+    public Combination(String uid, String imgUrl, String title, String description, int scraps, double kcal, int price, User user, Menu menu, Bread bread, Cheese cheese, List<Vegetable> vegetableList, List<Sauce> sauceList, List<Options> optionsList) {
         this.id = uid;
         this.imgUrl = imgUrl;
         this.title = title;
@@ -95,11 +95,11 @@ public class Combination implements Serializable {
         this.scraps = scraps;
     }
 
-    public int getKcal() {
+    public double getKcal() {
         return kcal;
     }
 
-    public void setKcal(int kcal) {
+    public void setKcal(double kcal) {
         this.kcal = kcal;
     }
 

@@ -16,15 +16,19 @@ import com.bumptech.glide.Glide;
 import com.mobile.upway.R;
 import com.mobile.upway.dto.Menu;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ccSandwichAdapter extends RecyclerView.Adapter<ccSandwichAdapter.ViewHolder> {
 
     private ArrayList<Menu> arrayList;
     private Context context;
+    int kcal;
+    int price;
+    String url;
 
     public interface onItemClickListener{
-        void onItemClicked(String data);
+        void onItemClicked(String data, int kcaldata, int pricedata, String urldata);
     }
 
     private onItemClickListener itemClickListener;
@@ -52,11 +56,14 @@ public class ccSandwichAdapter extends RecyclerView.Adapter<ccSandwichAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Menu menu = arrayList.get(position);
+        kcal = menu.getKcal();
+        price = menu.getPrice();
+        url = menu.getImgUrl();
         Glide.with(holder.itemView.getContext())
-                .load(menu.getImgUrl())
+                .load(url)
                 .into(holder.itemimage);
         holder.itemname.setText(menu.getName());
-        holder.kcalnprice.setText(menu.getKcal()+" kcal / "+menu.getPrice()+" 원");
+        holder.kcalnprice.setText(kcal+"kcal / "+price+"원");
 
     }
 
@@ -86,7 +93,10 @@ public class ccSandwichAdapter extends RecyclerView.Adapter<ccSandwichAdapter.Vi
                 public void onClick(View view){
                     //int pos = getAdapterPosition();
                     String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
-                    itemClickListener.onItemClicked(data);
+                    int kcaldata = kcal;
+                    int pricedata = price;
+                    String urldata = url;
+                    itemClickListener.onItemClicked(data, kcaldata, pricedata, urldata);
                 }
 
             });

@@ -76,7 +76,7 @@ public class CombinationDAO {
                                             combination.setScraps(Integer.parseInt(entry.getValue().toString()));
                                             break;
                                         case "kcal":
-                                            combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            combination.setKcal(Double.parseDouble(entry.getValue().toString()));
                                             break;
                                         case "price":
                                             combination.setPrice(Integer.parseInt(entry.getValue().toString()));
@@ -190,7 +190,7 @@ public class CombinationDAO {
                                             combination.setScraps(Integer.parseInt(entry.getValue().toString()));
                                             break;
                                         case "kcal":
-                                            combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            combination.setKcal(Double.parseDouble(entry.getValue().toString()));
                                             break;
                                         case "price":
                                             combination.setPrice(Integer.parseInt(entry.getValue().toString()));
@@ -285,7 +285,7 @@ public class CombinationDAO {
                                         combination.setScraps(Integer.parseInt(entry.getValue().toString()));
                                         break;
                                     case "kcal":
-                                        combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                        combination.setKcal(Double.parseDouble(entry.getValue().toString()));
                                         break;
                                     case "price":
                                         combination.setPrice(Integer.parseInt(entry.getValue().toString()));
@@ -380,7 +380,7 @@ public class CombinationDAO {
                                             combination.setScraps(Integer.parseInt(entry.getValue().toString()));
                                             break;
                                         case "kcal":
-                                            combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            combination.setKcal(Double.parseDouble(entry.getValue().toString()));
                                             break;
                                         case "price":
                                             combination.setPrice(Integer.parseInt(entry.getValue().toString()));
@@ -477,7 +477,7 @@ public class CombinationDAO {
                                             combination.setScraps(Integer.parseInt(entry.getValue().toString()));
                                             break;
                                         case "kcal":
-                                            combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            combination.setKcal(Double.parseDouble(entry.getValue().toString()));
                                             break;
                                         case "price":
                                             combination.setPrice(Integer.parseInt(entry.getValue().toString()));
@@ -574,7 +574,7 @@ public class CombinationDAO {
                                             combination.setScraps(Integer.parseInt(entry.getValue().toString()));
                                             break;
                                         case "kcal":
-                                            combination.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            combination.setKcal(Double.parseDouble(entry.getValue().toString()));
                                             break;
                                         case "price":
                                             combination.setPrice(Integer.parseInt(entry.getValue().toString()));

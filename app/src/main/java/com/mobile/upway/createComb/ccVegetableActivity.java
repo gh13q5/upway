@@ -27,7 +27,9 @@ public class ccVegetableActivity extends Activity{
     VegetableDAO vegetableDAO;
     Intent intent;
 
-    String[] vegetable = new String[3];
+    ArrayList<String> vegetable = new ArrayList<>();
+    double[] ckcal = new double[3];
+    String cs="";
     int n=0;
 
     protected void onCreate(Bundle savedInstanceState){
@@ -38,6 +40,9 @@ public class ccVegetableActivity extends Activity{
         String bread = intent.getStringExtra("bread");
         String cheese = intent.getStringExtra("cheese");
         ArrayList<String> list = (ArrayList<String>) intent.getSerializableExtra("list");
+        final double[] kcal = {intent.getDoubleExtra("kcal", 0.0)};
+        int price = intent.getIntExtra("price", 0);
+        String url = intent.getStringExtra("url");
 
         View btn4 = (View)findViewById(R.id.vegetable_bottom_square);
         Button vegeToSauce = (Button)btn4.findViewById(R.id.cm_btn_next);
@@ -52,30 +57,31 @@ public class ccVegetableActivity extends Activity{
         vegetableAdapter.setOnItemClickListener(
                 new ccVegetableAdapter.onItemClickListener(){
                     @Override
-                    public void onItemClicked(String data) {
+                    public void onItemClicked(String data, double kcaldata) {
                         if(n==0){
-                            vegetable[0] = data;
+                            vegetable.add(data);
+                            ckcal[0] = kcaldata;
                             textView1.setVisibility(View.VISIBLE);
-                            textView1.setText("-"+vegetable[0]);
+                            textView1.setText("-"+data);
                             n++;
                         } else if(n==1){
-                            vegetable[1] = data;
-                            if(vegetable[0]==vegetable[1]){
+                            if(vegetable.contains(data)){
                                 Toast.makeText(getApplicationContext(), "이미 선택한 야채입니다.", Toast.LENGTH_SHORT).show();
-                                vegetable[1]=null;
                             } else{
+                                vegetable.add(data);
+                                ckcal[1] = kcaldata;
                                 textView2.setVisibility(View.VISIBLE);
-                                textView2.setText("-"+vegetable[1]);
+                                textView2.setText("-"+data);
                                 n++;
                             }
                         } else if(n==2){
-                            vegetable[2] = data;
-                            if(vegetable[0]==vegetable[2] || vegetable[1]==vegetable[2] ){
+                            if(vegetable.contains(data)){
                                 Toast.makeText(getApplicationContext(), "이미 선택한 야채입니다.", Toast.LENGTH_SHORT).show();
-                                vegetable[2]=null;
                             } else {
+                                vegetable.add(data);
+                                ckcal[2] = kcaldata;
                                 textView3.setVisibility(View.VISIBLE);
-                                textView3.setText("-" + vegetable[2]);
+                                textView3.setText("-"+data);
                                 n++;
                             }
                         } else if(n==3){
@@ -89,21 +95,27 @@ public class ccVegetableActivity extends Activity{
             public void onClick(View v) {
                 if(textView1.getVisibility() == View.VISIBLE){
                     if(textView2.getVisibility() == View.VISIBLE && textView3.getVisibility() == View.VISIBLE){
-                        vegetable[0] = vegetable[1];
-                        vegetable[1] = vegetable[2];
-                        vegetable[2] = null;
-                        textView1.setText("-"+vegetable[0]);
-                        textView2.setText("-"+vegetable[1]);
+                        vegetable.add(0, vegetable.get(1));
+                        vegetable.add(1, vegetable.get(2));
+                        vegetable.remove(2);
+                        ckcal[0] = ckcal[1];
+                        ckcal[1] = ckcal[2];
+                        ckcal[2] = 0.0;
+                        textView1.setText(vegetable.get(0));
+                        textView2.setText(vegetable.get(1));
                         textView3.setVisibility(View.INVISIBLE);
                         n--;
                     } else if(textView2.getVisibility() == View.VISIBLE && textView3.getVisibility() == View.INVISIBLE){
-                        vegetable[0] = vegetable[1];
-                        vegetable[1] = null;
-                        textView1.setText("-"+vegetable[0]);
+                        vegetable.add(0, vegetable.get(1));
+                        vegetable.remove(1);
+                        ckcal[0] = ckcal[1];
+                        ckcal[1] = 0.0;
+                        textView1.setText(vegetable.get(0));
                         textView2.setVisibility(View.INVISIBLE);
                         n--;
                     } else if(textView2.getVisibility() == View.INVISIBLE && textView3.getVisibility() == View.INVISIBLE){
-                        vegetable[0] = null;
+                        vegetable.remove(0);
+                        ckcal[0] = 0.0;
                         textView1.setVisibility(View.INVISIBLE);
                         n--;
                     }
@@ -116,13 +128,16 @@ public class ccVegetableActivity extends Activity{
             public void onClick(View v) {
                 if(textView2.getVisibility() == View.VISIBLE){
                     if(textView3.getVisibility() == View.VISIBLE){
-                        vegetable[1] = vegetable[2];
-                        vegetable[2] = null;
-                        textView2.setText("-"+vegetable[1]);
+                        vegetable.add(1, vegetable.get(2));
+                        vegetable.remove(2);
+                        ckcal[1] = ckcal[2];
+                        ckcal[2] = 0.0;
+                        textView2.setText(vegetable.get(1));
                         textView3.setVisibility(View.INVISIBLE);
                         n--;
                     } else if(textView3.getVisibility() == View.INVISIBLE){
-                        vegetable[1] = null;
+                        vegetable.remove(1);
+                        ckcal[1] = 0.0;
                         textView2.setVisibility(View.INVISIBLE);
                         n--;
                     }
@@ -134,7 +149,8 @@ public class ccVegetableActivity extends Activity{
             @Override
             public void onClick(View v) {
                 if(textView3.getVisibility() == View.VISIBLE){
-                    vegetable[2] = null;
+                    vegetable.remove(2);
+                    ckcal[2] = 0.0;
                     textView3.setVisibility(View.INVISIBLE);
                     n--;
                 }
@@ -146,13 +162,17 @@ public class ccVegetableActivity extends Activity{
             public void onClick(View view) {
                 Intent sauceIntent = new Intent(getApplicationContext(),ccSauceActivity.class);
                 for(int i=0; i<n; i++){
-                    list.add(vegetable[i]);
+                    list.add("-"+vegetable.get(i));
+                    kcal[0]+=ckcal[i];
                 }
                 sauceIntent.putExtra("sandwich", sandwich);
                 sauceIntent.putExtra("bread", bread);
                 sauceIntent.putExtra("cheese", cheese);
                 sauceIntent.putExtra("vegetable", vegetable);
                 sauceIntent.putExtra("list", list);
+                sauceIntent.putExtra("kcal", kcal[0]);
+                sauceIntent.putExtra("price", price);
+                sauceIntent.putExtra("url", url);
                 startActivity(sauceIntent);
             }
         });

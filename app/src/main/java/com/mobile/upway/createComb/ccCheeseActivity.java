@@ -28,6 +28,7 @@ public class ccCheeseActivity extends Activity{
     Intent intent;
 
     String cheese = "";
+    double ckcal=0.0;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -36,6 +37,9 @@ public class ccCheeseActivity extends Activity{
         String sandwich = intent.getStringExtra("sandwich");
         String bread = intent.getStringExtra("bread");
         ArrayList<String> list = (ArrayList<String>) intent.getSerializableExtra("list");
+        final double[] kcal = {intent.getDoubleExtra("kcal", 0.0)};
+        int price = intent.getIntExtra("price", 0);
+        String url = intent.getStringExtra("url");
 
         View btn3 = (View)findViewById(R.id.cheese_bottom_square);
         Button cheeseToVege = (Button)btn3.findViewById(R.id.cm_btn_next);
@@ -48,8 +52,9 @@ public class ccCheeseActivity extends Activity{
         cheeseAdapter.setOnItemClickListener(
                 new ccCheeseAdapter.onItemClickListener(){
                     @Override
-                    public void onItemClicked(String data) {
+                    public void onItemClicked(String data, double kcaldata) {
                         cheese = data;
+                        ckcal = kcaldata;
                         textView.setVisibility(View.VISIBLE);
                         textView.setText(cheese);
                     }
@@ -61,10 +66,15 @@ public class ccCheeseActivity extends Activity{
                 if(cheese.length()>1){
                     Intent vegeIntent = new Intent(getApplicationContext(),ccVegetableActivity.class);
                     list.add(cheese);
+                    kcal[0]+=ckcal;
+                    Log.d("현재 칼로리 : " , String.valueOf(kcal[0]));
                     vegeIntent.putExtra("sandwich", sandwich);
                     vegeIntent.putExtra("bread", bread);
                     vegeIntent.putExtra("cheese", cheese);
                     vegeIntent.putExtra("list", list);
+                    vegeIntent.putExtra("kcal", kcal[0]);
+                    vegeIntent.putExtra("price", price);
+                    vegeIntent.putExtra("url", url);
                     startActivity(vegeIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), "치즈를 선택해주세요", Toast.LENGTH_SHORT).show();

@@ -16,15 +16,18 @@ import com.mobile.upway.dto.Options;
 
 import org.checkerframework.checker.units.qual.A;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ccAddAdapter extends RecyclerView.Adapter<ccAddAdapter.ViewHolder> {
 
     private ArrayList<Options> optionsList;
     private Context context;
+    int kcal;
+    int price;
 
     public interface onItemClickListener{
-        void onItemClicked(String data);
+        void onItemClicked(String data, int kcaldata, int pricedata);
     }
 
     private ccAddAdapter.onItemClickListener itemClickListener;
@@ -52,11 +55,13 @@ public class ccAddAdapter extends RecyclerView.Adapter<ccAddAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Options options = optionsList.get(position);
+        kcal = options.getKcal();
+        price = options.getPrice();
         Glide.with(holder.itemView)
                 .load(options.getImgUrl())
                 .into(holder.itemimage);
         holder.itemname.setText(options.getName());
-        holder.kcalnprice.setText(options.getKcal()+" kcal / "+options.getPrice()+" 원");
+        holder.kcalnprice.setText(kcal+"kcal / "+price+"원");
     }
 
     @Override
@@ -86,7 +91,9 @@ public class ccAddAdapter extends RecyclerView.Adapter<ccAddAdapter.ViewHolder> 
                 public void onClick(View view){
                     //int pos = getAdapterPosition();
                     String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
-                    itemClickListener.onItemClicked(data);
+                    int kcaldata = kcal;
+                    int pricedata = price;
+                    itemClickListener.onItemClicked(data, kcaldata, pricedata);
                 }
             });
         }

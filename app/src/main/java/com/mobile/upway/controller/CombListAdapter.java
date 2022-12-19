@@ -31,6 +31,7 @@ import com.mobile.upway.dto.Menu;
 import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
@@ -126,6 +127,9 @@ public class CombListAdapter extends RecyclerView.Adapter<CombListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Combination comb = combList.get(position);
+        double kcal = comb.getKcal();
+        DecimalFormat df = new DecimalFormat("0.0");
+        String skcal = df.format(kcal);
 
         holder.hiddenCombId.setText(comb.getId());
 
@@ -134,7 +138,7 @@ public class CombListAdapter extends RecyclerView.Adapter<CombListAdapter.ViewHo
                 .into(holder.sandwichImage);
 
         holder.title.setText(comb.getTitle());
-        holder.kcalAndPrice.setText(comb.getKcal() + "kcal / " + comb.getPrice() + "원");
+        holder.kcalAndPrice.setText(skcal + "kcal / " + comb.getPrice() + "원");
         holder.bread.setText(comb.getBread().getName());
         holder.cheese.setText(comb.getCheese().getName());
 

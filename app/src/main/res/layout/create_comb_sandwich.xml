@@ -9,20 +9,32 @@
         android:background="#F3F3F3"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/create_header"
-            layout="@layout/create_comb_top"> </include>
+        <LinearLayout
+            android:id="@+id/sand_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#01963E">
+
+            <TextView
+                android:id="@+id/create_menu_title"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:text="샌드위치 선택"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/choice_sand_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/sandwich_bottom_square"
-            android:layout_below="@id/create_header"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp" />
+            android:layout_below="@id/sand_top"
+            android:layout_margin="5dp" />
 
         <include
             android:id="@+id/sandwich_bottom_square"
