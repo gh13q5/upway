@@ -99,8 +99,8 @@ public class ccListActivity extends Activity{
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        //String email = user.getEmail();
-        String email = "winflok943@gmail.com";
+        String email = user.getEmail();
+        //String email = "winflok943@gmail.com";
 
         listAdapter = new ccListAdapter();
         context = getApplicationContext();

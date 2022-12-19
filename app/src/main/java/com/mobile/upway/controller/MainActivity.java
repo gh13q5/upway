@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.my_sub_btn:
-                // 임시로 login 페이지랑 연결시켜놓음
                 Intent myIntent = new Intent(this, ccSandwichActivity.class);
                 startActivity(myIntent);
                 break;
