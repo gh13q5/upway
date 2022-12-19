@@ -53,7 +53,7 @@ public class VegetableDAO {
                                             vegetable.setName(entry.getValue().toString());
                                             break;
                                         case "kcal":
-                                            vegetable.setKcal(Integer.parseInt(entry.getValue().toString()));
+                                            vegetable.setKcal(Double.parseDouble(entry.getValue().toString()));
                                             break;
                                         case "imgUrl":
                                             vegetable.setImgUrl(entry.getValue().toString());

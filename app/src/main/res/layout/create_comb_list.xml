@@ -8,30 +8,61 @@
     android:background="#F3F3F3"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/create_header"
-        layout="@layout/create_comb_top"> </include>
+    <LinearLayout
+        android:id="@+id/list_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#01963E">
+
+        <TextView
+            android:id="@+id/create_menu_title"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="5"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="5dp"
+            android:text="선택 완료!"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp" />
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/create_header"
-        android:layout_above="@id/list_bottom_square">
+        android:layout_below="@id/list_top"
+        android:layout_above="@id/list_bottom_square"
+        android:layout_margin="5dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/choice_bread_list"
+            android:id="@+id/choice_all_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            />
+
+        <EditText
+            android:id="@+id/list_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_below="@id/choice_all_list"
+            android:layout_marginBottom="10dp"
+            android:hint="레시피 이름"
+            android:lines="1"
+            android:gravity="center"
+            android:background="@drawable/list_card_shape"
             />
 
         <EditText
             android:id="@+id/list_comment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_below="@id/choice_bread_list"
+            android:layout_below="@id/list_title"
             android:hint="코멘트"
-            android:maxLength="5"
+            android:gravity="center"
+            android:background="@drawable/list_card_shape"
             />
 
     </RelativeLayout>

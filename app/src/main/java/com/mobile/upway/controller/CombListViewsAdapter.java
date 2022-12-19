@@ -22,6 +22,7 @@ import com.mobile.upway.dao.CombinationDAO;
 import com.mobile.upway.dao.UserScrapDAO;
 import com.mobile.upway.dto.Combination;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CombListViewsAdapter extends RecyclerView.Adapter<CombListViewsAdapter.ViewHolder> {
@@ -57,11 +58,14 @@ public class CombListViewsAdapter extends RecyclerView.Adapter<CombListViewsAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Combination comb = combList.get(position);
+        double kcal = comb.getKcal();
+        DecimalFormat df = new DecimalFormat("0.0");
+        String skcal = df.format(kcal);
 
         holder.scrapCount.setText(String.valueOf(comb.getScraps()));
 
         holder.title.setText(comb.getTitle());
-        holder.kcalAndPrice.setText(comb.getKcal() + "kcal / " + comb.getPrice() + "원");
+        holder.kcalAndPrice.setText(skcal + "kcal / " + comb.getPrice() + "원");
         holder.bread.setText(comb.getBread().getName());
         holder.cheese.setText(comb.getCheese().getName());
 

@@ -1,6 +1,8 @@
 package com.mobile.upway.createComb;
 
+import android.app.assist.AssistStructure;
 import android.content.Context;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,24 +13,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
 import com.mobile.upway.R;
 import com.mobile.upway.dto.Menu;
 
-import org.checkerframework.checker.units.qual.A;
-
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ccSandwichAdapter extends RecyclerView.Adapter<ccSandwichAdapter.ViewHolder> {
 
     private ArrayList<Menu> arrayList;
     private Context context;
+    int kcal;
+    int price;
+    String url;
+
+    public interface onItemClickListener{
+        void onItemClicked(String data, int kcaldata, int pricedata, String urldata);
+    }
+
+    private onItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(onItemClickListener listener){
+        itemClickListener = listener;
+    }
 
     public ccSandwichAdapter(){
         arrayList = new ArrayList<>();
     }
-
-    private FirebaseAuth firebaseAuth;
 
     @NonNull
     @Override
@@ -45,11 +56,15 @@ public class ccSandwichAdapter extends RecyclerView.Adapter<ccSandwichAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Menu menu = arrayList.get(position);
+        kcal = menu.getKcal();
+        price = menu.getPrice();
+        url = menu.getImgUrl();
         Glide.with(holder.itemView.getContext())
-                .load(menu.getImgUrl())
+                .load(url)
                 .into(holder.itemimage);
         holder.itemname.setText(menu.getName());
-        holder.kcalnprice.setText(menu.getKcal()+" kcal / "+menu.getPrice()+" 원");
+        holder.kcalnprice.setText(kcal+"kcal / "+price+"원");
+
     }
 
     @Override
@@ -60,16 +75,6 @@ public class ccSandwichAdapter extends RecyclerView.Adapter<ccSandwichAdapter.Vi
     public void setList(ArrayList<Menu> list){
         this.arrayList = list;
         notifyDataSetChanged();
-    }
-
-    public interface onItemClickListener{
-        void onItemClicked(int pos, String data);
-    }
-
-    private onItemClickListener itemClickListener;
-
-    public void setOnItemClickListener(onItemClickListener listener){
-        itemClickListener = listener;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -84,24 +89,18 @@ public class ccSandwichAdapter extends RecyclerView.Adapter<ccSandwichAdapter.Vi
             this.kcalnprice = itemView.findViewById(R.id.itemkcalnprice);
 
             itemView.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v){
-                    String data = "";
-                    int pos = getAdapterPosition();
-                    if(pos!=RecyclerView.NO_POSITION){
-                        data = getItemname().getText().toString();
-                    }
-                    itemClickListener.onItemClicked(pos,data);
+                @Override
+                public void onClick(View view){
+                    //int pos = getAdapterPosition();
+                    String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
+                    int kcaldata = kcal;
+                    int pricedata = price;
+                    String urldata = url;
+                    itemClickListener.onItemClicked(data, kcaldata, pricedata, urldata);
                 }
+
             });
         }
-
-        public TextView getItemname(){
-            return itemname;
-        }
-
-        public void setItemname(TextView itemname){
-            this.itemname = itemname;
-        }
-
     }
+
 }

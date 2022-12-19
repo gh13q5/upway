@@ -16,12 +16,24 @@ import com.bumptech.glide.Glide;
 import com.mobile.upway.R;
 import com.mobile.upway.dto.Sauce;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ccSauceAdapter extends RecyclerView.Adapter<ccSauceAdapter.ViewHolder> {
 
     private ArrayList<Sauce> sauceList;
     private Context context;
+    double kcal;
+
+    public interface onItemClickListener{
+        void onItemClicked(String data, double kcaldata);
+    }
+
+    private ccSauceAdapter.onItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(ccSauceAdapter.onItemClickListener listener){
+        itemClickListener = listener;
+    }
 
     public ccSauceAdapter(){
         sauceList = new ArrayList<>();
@@ -42,11 +54,14 @@ public class ccSauceAdapter extends RecyclerView.Adapter<ccSauceAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Sauce sauce = sauceList.get(position);
+        kcal = sauce.getKcal();
+        DecimalFormat df = new DecimalFormat("0.0");
+        String skcal = df.format(kcal);
         Glide.with(holder.itemView)
                 .load(sauce.getImgUrl())
                 .into(holder.itemimage);
         holder.itemname.setText(sauce.getName());
-        holder.kcalnprice.setText(sauce.getKcal()+" kcal");
+        holder.kcalnprice.setText(skcal+" kcal");
     }
 
     @Override
@@ -70,7 +85,16 @@ public class ccSauceAdapter extends RecyclerView.Adapter<ccSauceAdapter.ViewHold
             this.itemimage = itemView.findViewById(R.id.itemimage);
             this.itemname = itemView.findViewById(R.id.itemname);
             this.kcalnprice = itemView.findViewById(R.id.itemkcalnprice);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    //int pos = getAdapterPosition();
+                    String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
+                    double kcaldata = kcal;
+                    itemClickListener.onItemClicked(data, kcaldata);
+                }
+            });
         }
     }
-
 }

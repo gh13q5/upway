@@ -14,16 +14,26 @@ import com.bumptech.glide.Glide;
 import com.mobile.upway.R;
 import com.mobile.upway.dto.Bread;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ccBreadAdapter extends RecyclerView.Adapter<ccBreadAdapter.ViewHolder> {
 
     private ArrayList<Bread> breadList;
     private Context context;
+    int kcal;
 
-    public ccBreadAdapter(/*ArrayList<Bread> arrayList, Context context*/){
-        /*this.arrayList = arrayList;
-        this.context = context;*/
+    public interface onItemClickListener{
+        void onItemClicked(String data, int kcaldata);
+    }
+
+    private ccBreadAdapter.onItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(ccBreadAdapter.onItemClickListener listener){
+        itemClickListener = listener;
+    }
+
+    public ccBreadAdapter(){
         breadList = new ArrayList<>();
     }
 
@@ -42,11 +52,12 @@ public class ccBreadAdapter extends RecyclerView.Adapter<ccBreadAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Bread bread = breadList.get(position);
+        kcal = bread.getKcal();
         Glide.with(holder.itemView)
                 .load(bread.getImgUrl())
                 .into(holder.itemimage);
         holder.itemname.setText(bread.getName());
-        holder.kcalnprice.setText(bread.getKcal()+" kcal");
+        holder.kcalnprice.setText(kcal+"kcal");
     }
 
     @Override
@@ -70,6 +81,17 @@ public class ccBreadAdapter extends RecyclerView.Adapter<ccBreadAdapter.ViewHold
             this.itemimage = itemView.findViewById(R.id.itemimage);
             this.itemname = itemView.findViewById(R.id.itemname);
             this.kcalnprice = itemView.findViewById(R.id.itemkcalnprice);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    //int pos = getAdapterPosition();
+                    String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
+                    int kcaldata = kcal;
+                    itemClickListener.onItemClicked(data, kcaldata);
+                }
+
+            });
         }
     }
 
