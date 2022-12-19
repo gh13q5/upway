@@ -21,6 +21,16 @@ public class ccCheeseAdapter extends RecyclerView.Adapter<ccCheeseAdapter.ViewHo
     private ArrayList<Cheese> cheeseList;
     private Context context;
 
+    public interface onItemClickListener{
+        void onItemClicked(String data);
+    }
+
+    private ccCheeseAdapter.onItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(ccCheeseAdapter.onItemClickListener listener){
+        itemClickListener = listener;
+    }
+
     public ccCheeseAdapter(){
         cheeseList = new ArrayList<>();
     }
@@ -68,6 +78,16 @@ public class ccCheeseAdapter extends RecyclerView.Adapter<ccCheeseAdapter.ViewHo
             this.itemimage = itemView.findViewById(R.id.itemimage);
             this.itemname = itemView.findViewById(R.id.itemname);
             this.kcalnprice = itemView.findViewById(R.id.itemkcalnprice);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    //int pos = getAdapterPosition();
+                    String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
+                    itemClickListener.onItemClicked(data);
+                }
+
+            });
         }
     }
 

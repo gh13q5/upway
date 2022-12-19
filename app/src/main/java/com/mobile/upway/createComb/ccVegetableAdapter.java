@@ -23,6 +23,16 @@ public class ccVegetableAdapter extends RecyclerView.Adapter<ccVegetableAdapter.
     private ArrayList<Vegetable> vegetableList;
     private Context context;
 
+    public interface onItemClickListener{
+        void onItemClicked(String data);
+    }
+
+    private ccVegetableAdapter.onItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(ccVegetableAdapter.onItemClickListener listener){
+        itemClickListener = listener;
+    }
+
     public ccVegetableAdapter(){
         vegetableList = new ArrayList<>();
     }
@@ -70,7 +80,15 @@ public class ccVegetableAdapter extends RecyclerView.Adapter<ccVegetableAdapter.
             this.itemimage = itemView.findViewById(R.id.itemimage);
             this.itemname = itemView.findViewById(R.id.itemname);
             this.kcalnprice = itemView.findViewById(R.id.itemkcalnprice);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    //int pos = getAdapterPosition();
+                    String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
+                    itemClickListener.onItemClicked(data);
+                }
+            });
         }
     }
-
 }

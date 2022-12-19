@@ -21,9 +21,17 @@ public class ccBreadAdapter extends RecyclerView.Adapter<ccBreadAdapter.ViewHold
     private ArrayList<Bread> breadList;
     private Context context;
 
-    public ccBreadAdapter(/*ArrayList<Bread> arrayList, Context context*/){
-        /*this.arrayList = arrayList;
-        this.context = context;*/
+    public interface onItemClickListener{
+        void onItemClicked(String data);
+    }
+
+    private ccBreadAdapter.onItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(ccBreadAdapter.onItemClickListener listener){
+        itemClickListener = listener;
+    }
+
+    public ccBreadAdapter(){
         breadList = new ArrayList<>();
     }
 
@@ -70,6 +78,16 @@ public class ccBreadAdapter extends RecyclerView.Adapter<ccBreadAdapter.ViewHold
             this.itemimage = itemView.findViewById(R.id.itemimage);
             this.itemname = itemView.findViewById(R.id.itemname);
             this.kcalnprice = itemView.findViewById(R.id.itemkcalnprice);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    //int pos = getAdapterPosition();
+                    String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
+                    itemClickListener.onItemClicked(data);
+                }
+
+            });
         }
     }
 

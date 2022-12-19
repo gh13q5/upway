@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/choice_sandwich"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,44 +17,17 @@
             android:id="@+id/choice_sand_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/create_header"
             android:layout_above="@id/sandwich_bottom_square"
-            android:layout_margin="5dp"/>
+            android:layout_below="@id/create_header"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp" />
 
-        <RelativeLayout
+        <include
             android:id="@+id/sandwich_bottom_square"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FEC70B"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true">
+            layout="@layout/create_comb_bottom"> </include>
 
-            <TextView
-                android:id="@+id/sandwich_price"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:layout_weight="5"
-                android:gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="388 kcal"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:textSize="20sp" />
-
-            <android.widget.Button
-                android:id="@+id/sw_btn_next"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="12dp"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:drawableTop="@drawable/icon_arrow_green"
-                android:background="@drawable/create_menu_circle_button"
-                />
-
-        </RelativeLayout>
 
 
     </RelativeLayout>

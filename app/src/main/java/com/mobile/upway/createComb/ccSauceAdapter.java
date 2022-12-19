@@ -23,6 +23,16 @@ public class ccSauceAdapter extends RecyclerView.Adapter<ccSauceAdapter.ViewHold
     private ArrayList<Sauce> sauceList;
     private Context context;
 
+    public interface onItemClickListener{
+        void onItemClicked(String data);
+    }
+
+    private ccSauceAdapter.onItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(ccSauceAdapter.onItemClickListener listener){
+        itemClickListener = listener;
+    }
+
     public ccSauceAdapter(){
         sauceList = new ArrayList<>();
     }
@@ -70,7 +80,15 @@ public class ccSauceAdapter extends RecyclerView.Adapter<ccSauceAdapter.ViewHold
             this.itemimage = itemView.findViewById(R.id.itemimage);
             this.itemname = itemView.findViewById(R.id.itemname);
             this.kcalnprice = itemView.findViewById(R.id.itemkcalnprice);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    //int pos = getAdapterPosition();
+                    String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
+                    itemClickListener.onItemClicked(data);
+                }
+            });
         }
     }
-
 }

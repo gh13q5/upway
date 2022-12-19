@@ -21,34 +21,61 @@
     <RelativeLayout
         android:id="@+id/add_bottom_square"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:background="#FEC70B"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
+        <TextView
+            android:id="@+id/chosen1"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/list_card_detail_green_shape"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="샌드위치"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+            />
 
         <TextView
-            android:id="@+id/sandwich_price"
+            android:id="@+id/chosen2"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_weight="5"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:text="388 kcal"
+            android:layout_height="42dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/list_card_detail_green_shape"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="샌드위치"
             android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:textSize="20sp" />
-
-        <android.widget.Button
-            android:id="@+id/ad_btn_before"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_toLeftOf="@id/ad_btn_end"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="12dp"
+            android:textSize="14sp"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:drawableTop="@drawable/icon_arrow_back_green"
-            android:background="@drawable/create_menu_circle_button"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/chosen1"
+            android:visibility="invisible"
+            />
+
+        <TextView
+            android:id="@+id/chosen3"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/list_card_detail_green_shape"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="샌드위치"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/chosen2"
+            android:visibility="invisible"
             />
 
         <android.widget.Button

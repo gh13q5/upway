@@ -23,6 +23,16 @@ public class ccAddAdapter extends RecyclerView.Adapter<ccAddAdapter.ViewHolder> 
     private ArrayList<Options> optionsList;
     private Context context;
 
+    public interface onItemClickListener{
+        void onItemClicked(String data);
+    }
+
+    private ccAddAdapter.onItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(ccAddAdapter.onItemClickListener listener){
+        itemClickListener = listener;
+    }
+
     public ccAddAdapter(){
         optionsList = new ArrayList<>();
     }
@@ -70,6 +80,15 @@ public class ccAddAdapter extends RecyclerView.Adapter<ccAddAdapter.ViewHolder> 
             this.itemimage = itemView.findViewById(R.id.itemimage);
             this.itemname = itemView.findViewById(R.id.itemname);
             this.kcalnprice = itemView.findViewById(R.id.itemkcalnprice);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    //int pos = getAdapterPosition();
+                    String data = ((TextView) view.findViewById(R.id.itemname)).getText().toString();
+                    itemClickListener.onItemClicked(data);
+                }
+            });
         }
     }
 }
