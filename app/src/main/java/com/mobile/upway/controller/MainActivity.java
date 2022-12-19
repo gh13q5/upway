@@ -11,12 +11,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mobile.upway.R;
 import com.mobile.upway.createComb.ccCheeseActivity;
 import com.mobile.upway.createComb.ccSandwichActivity;
 import com.mobile.upway.dao.CombinationDAO;
+import com.mobile.upway.dao.UserDAO;
 import com.mobile.upway.dto.Combination;
+import com.mobile.upway.dto.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +29,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     static final String TAG = "MainActivity";
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser currentUser;
 
     // LIST
     RecyclerView recyclerView;
@@ -46,8 +54,14 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.my_sub_btn:
-                Intent myIntent = new Intent(this, ccSandwichActivity.class);
-                startActivity(myIntent);
+                firebaseAuth = FirebaseAuth.getInstance();
+                currentUser = firebaseAuth.getCurrentUser();
+                if(currentUser == null){
+                    Toast.makeText(getApplicationContext(), "로그인하신 후 이용 가능합니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent myIntent = new Intent(this, ccSandwichActivity.class);
+                    startActivity(myIntent);
+                }
                 break;
             case R.id.best_sub_btn:
                 Intent bestIntent = new Intent(this, BestSubActivity.class);
