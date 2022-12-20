@@ -5,12 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mobile.upway.R;
+import com.mobile.upway.dao.CommentDAO;
 import com.mobile.upway.dto.Comment;
 
 import java.util.ArrayList;
@@ -21,6 +26,10 @@ public class ReviewListAdapter extends RecyclerView.Adapter<ReviewListAdapter.Re
 
     private Context context;
     private ArrayList<Comment> commentList;
+
+
+    // FIREBASE AUTH
+    private FirebaseAuth firebaseAuth;
 
     public ReviewListAdapter() {commentList = new ArrayList<>();}
 

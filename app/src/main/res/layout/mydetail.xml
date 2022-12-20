@@ -4,14 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <com.mobile.upway.customLayout.TitleBarInflater
+        android:id="@+id/include_title_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        tools:ignore="MissingConstraints" />
 
     <ScrollView
         android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/include_title_bar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,17 +41,13 @@
                 android:layout_height="wrap_content"
                 layout="@layout/detail_breadcheese_tbl"
                 />
-            <ImageView
-                android:src="@drawable/dashline"
-                android:layerType="software"
-                android:layout_width="match_parent"
-                android:layout_height="1.5dp" />
+
             <include
-                android:id="@+id/ingrtbl"
+                android:id="@+id/vegetabletbl"
+                layout="@layout/detail_vege_tbl"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                layout="@layout/detail_ingridient_list"
-                />
+                android:layout_gravity="center_horizontal" />
             <ImageView
                 android:src="@drawable/dashline"
                 android:layerType="software"

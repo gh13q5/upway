@@ -13,6 +13,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mobile.upway.controller.FireStoreCallback;
 import com.mobile.upway.controller.FireStoreListCallback;
 import com.mobile.upway.dto.Combination;
 import com.mobile.upway.dto.Comment;
@@ -53,12 +54,13 @@ public class CommentDAO {
     }
 
     //write
-    public void writeComment(Comment comment){
+    public void writeComment(Comment comment, FireStoreCallback fireStoreCallback){
         commentColl.add(comment)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                        fireStoreCallback.onCallback(null);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

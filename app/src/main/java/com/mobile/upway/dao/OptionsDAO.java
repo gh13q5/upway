@@ -13,12 +13,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile.upway.controller.FireStoreCallback;
+import com.mobile.upway.controller.FireStoreListCallback;
 import com.mobile.upway.createComb.FireStoreOptionsListCallback;
 import com.mobile.upway.dto.Options;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OptionsDAO {
     public static String TAG = "OptionsDAO";
@@ -80,6 +82,28 @@ public class OptionsDAO {
                         Options options = document.toObject(Options.class);
                         Log.d(TAG, options.getName());
                         fireStoreCallback.onCallback(options);
+                    }
+                });
+    }
+
+    public void findOptionsByArrayList(FireStoreListCallback fireStoreListCallback, List<Options> optionsList){
+        List<String> nameList = optionsList.stream().map(Options::getName).collect(Collectors.toList());
+        List<Options> optionList = new ArrayList<>();
+        optionscol.whereIn("name",nameList)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for(QueryDocumentSnapshot document: task.getResult()){
+                                Options options = new Options();
+                                options = document.toObject(Options.class);
+                                optionList.add(options);
+                            }
+                            fireStoreListCallback.onCallbackList(optionList);
+                        }else{
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
                     }
                 });
     }
