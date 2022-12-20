@@ -13,12 +13,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile.upway.controller.FireStoreCallback;
+import com.mobile.upway.controller.FireStoreListCallback;
 import com.mobile.upway.createComb.FireStoreSauceListCallback;
 import com.mobile.upway.dto.Sauce;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class SauceDAO {
     public static String TAG = "SauceDAO";
@@ -81,7 +83,28 @@ public class SauceDAO {
                 });
     }
 
+    public void findSauceByArrayList(FireStoreListCallback fireStoreListCallback, List<Sauce> sauceList) {
+        List<String> nameList = sauceList.stream().map(Sauce::getName).collect(Collectors.toList());
+        List<Sauce> scList = new ArrayList<>();
+        saucecol.whereIn("name",nameList)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()){
+                                Sauce sauce = document.toObject(Sauce.class);
+                                scList.add(sauce);
+                                Log.d(TAG,sauce.getName());
 
+                            }
+                            fireStoreListCallback.onCallbackList(scList);
+                        }else{
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
     public Query getSauce(){
         return databaseReference;
     }

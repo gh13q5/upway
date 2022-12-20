@@ -13,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile.upway.controller.FireStoreCallback;
+import com.mobile.upway.controller.FireStoreListCallback;
 import com.mobile.upway.createComb.FireStoreBreadListCallback;
 import com.mobile.upway.createComb.FireStoreVegetableListCallback;
 import com.mobile.upway.dto.Bread;
@@ -22,6 +23,7 @@ import com.mobile.upway.dto.Vegetable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class VegetableDAO {
     public static String TAG = "VegetableDAO";
@@ -83,6 +85,32 @@ public class VegetableDAO {
                     }
                 });
     }
+
+
+    public void findVegetableByArrayList(FireStoreListCallback fireStoreListCallback, List<Vegetable> vegetableList){
+        List<String> nameList = vegetableList.stream().map(Vegetable::getName).collect(Collectors.toList());
+        List<Vegetable> vegeList = new ArrayList<>();
+        vegetablecol.whereIn("name", nameList)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Vegetable vegetable = new Vegetable();
+                                vegetable = document.toObject(Vegetable.class);
+                                vegeList.add(vegetable);
+                                Log.d(TAG, vegetable.getName());
+                            }
+                            fireStoreListCallback.onCallbackList(vegeList);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+    }
+
 
     public Query getVegetable(){
         return databaseReference;

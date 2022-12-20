@@ -14,6 +14,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobile.upway.controller.FireStoreCallback;
 import com.mobile.upway.createComb.FireStoreCheeseListCallback;
+import com.mobile.upway.dto.Bread;
 import com.mobile.upway.dto.Cheese;
 
 import java.util.ArrayList;
@@ -78,6 +79,23 @@ public class CheeseDAO {
                         Cheese cheese = document.toObject(Cheese.class);
                         Log.d(TAG, cheese.getName());
                         fireStoreCallback.onCallback(cheese);
+                    }
+                });
+    }
+
+    public void findCheeseByName(String name, FireStoreCallback fireStoreCallback) {
+        cheesecol.whereEqualTo("name", name)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Cheese cheese = new Cheese();
+                                cheese = document.toObject(Cheese.class);
+                                fireStoreCallback.onCallback(cheese);
+                            }
+                        }
                     }
                 });
     }
